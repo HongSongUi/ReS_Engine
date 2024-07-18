@@ -80,5 +80,6 @@ bool DebugCamera::Frame()
 	//_ViewMat.ViewLookAt(_Pos, _Target, _Up);
 	Update();
 	CameraFrustum.CreateFrustum(&ViewMat, &ProjMat);
+
     return true;
 }
