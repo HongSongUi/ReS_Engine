@@ -28,11 +28,13 @@
     <ClInclude Include="Device.h" />
     <ClInclude Include="DxState.h" />
     <ClInclude Include="Frustum.h" />
+    <ClInclude Include="GameCore.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="MathLib.h" />
     <ClInclude Include="Object2D.h" />
     <ClInclude Include="ObjectMesh.h" />
+    <ClInclude Include="RenderToTexture.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="GameSound.h" />
@@ -53,11 +55,13 @@
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="DxState.cpp" />
     <ClCompile Include="Frustum.cpp" />
+    <ClCompile Include="GameCore.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="MathLib.cpp" />
     <ClCompile Include="Object2D.cpp" />
     <ClCompile Include="ObjectMesh.cpp" />
+    <ClCompile Include="RenderToTexture.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="GameSound.cpp" />
