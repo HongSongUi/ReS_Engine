@@ -28,6 +28,9 @@
     <Filter Include="Camera">
       <UniqueIdentifier>{3d195819-1edb-4d46-a78c-dc69c46bb386}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{00bd1677-1fe5-4315-838d-e13dbce9afdd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameWindow.h">
@@ -90,6 +93,12 @@
     <ClInclude Include="Frustum.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectMesh.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameWindow.cpp">
@@ -148,6 +157,12 @@
     </ClCompile>
     <ClCompile Include="Frustum.cpp">
       <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectMesh.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseObject.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

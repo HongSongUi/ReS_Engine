@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Camera3D.h" />
     <ClInclude Include="Collision.h" />
@@ -30,6 +31,7 @@
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="MathLib.h" />
+    <ClInclude Include="ObjectMesh.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="GameSound.h" />
@@ -41,6 +43,7 @@
     <ClInclude Include="Writer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Camera3D.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -52,6 +55,7 @@
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="MathLib.cpp" />
+    <ClCompile Include="ObjectMesh.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="GameSound.cpp" />

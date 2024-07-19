@@ -134,6 +134,7 @@ bool ObjectMesh::Create()
 	{
 		return false;
 	}
+
 	if (IndexList.size() > 0) 
 	{
 		if (FAILED(CreateIndexBuffer()))
@@ -141,10 +142,12 @@ bool ObjectMesh::Create()
 			return false;
 		}
 	}
+
 	if (FAILED(CreateInputLayout())) 
 	{
 		return false;
 	}
+
 	if (FAILED(CreateConstantBuffer())) 
 	{
 		return false;
