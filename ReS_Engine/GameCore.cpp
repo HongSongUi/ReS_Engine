@@ -52,7 +52,7 @@ bool GameCore::PostProcess()
 
 bool GameCore::CoreInit()
 {
-	IsGame2D = false;
+	UseDebugCam = false;
 	GameDevice.SetWindowData(Window.ClientRect, Window.Hwnd);
 
 	ClientRect = Window.ClientRect;
@@ -85,7 +85,7 @@ bool GameCore::CoreInit()
 
 	
 	Init();
-	if (IsGame2D == false)
+	if (UseDebugCam == true)
 	{
 		DebugCam.CreateViewMatrix(Vector3(0, 10, -10), Vector3(0, 45, 0), Vector3(0, 1, 0));
 		DebugCam.CreateProjMatrix(1.0f, 10000.0f, 3.141592 * 0.25f, (float)ClientRect.right / (float)ClientRect.bottom);
@@ -265,7 +265,7 @@ void GameCore::ReSizeWindow(UINT width, UINT height)
 	GameWriter.SetClientRect(ClientRect);
 	GameWriter.Set(_BackBuffer);
 
-	if (IsGame2D == false)
+	if (UseDebugCam == true)
 	{
 		DebugCam.UpdateProjMatrix((float)ClientRect.right / (float)ClientRect.bottom);
 

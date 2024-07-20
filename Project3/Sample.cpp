@@ -3,7 +3,7 @@
 
 bool Sample::Init()
 {
-    IsGame2D = true;
+ 
     return true;
 }
 
