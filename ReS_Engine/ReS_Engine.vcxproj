@@ -33,6 +33,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="MathLib.h" />
     <ClInclude Include="Object2D.h" />
+    <ClInclude Include="Object3D.h" />
     <ClInclude Include="ObjectMesh.h" />
     <ClInclude Include="RenderToTexture.h" />
     <ClInclude Include="Shader.h" />
@@ -60,6 +61,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="MathLib.cpp" />
     <ClCompile Include="Object2D.cpp" />
+    <ClCompile Include="Object3D.cpp" />
     <ClCompile Include="ObjectMesh.cpp" />
     <ClCompile Include="RenderToTexture.cpp" />
     <ClCompile Include="Shader.cpp" />
