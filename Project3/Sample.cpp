@@ -3,22 +3,23 @@
 
 bool Sample::Init()
 {
-    return false;
+    IsGame2D = true;
+    return true;
 }
 
 bool Sample::Frame()
 {
-    return false;
+    return true;
 }
 
 bool Sample::Render()
 {
-    return false;
+    return true;
 }
 
 bool Sample::Release()
 {
-    return false;
+    return true;
 }
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,

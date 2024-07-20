@@ -83,10 +83,14 @@ bool GameCore::CoreInit()
 	}
 	RenderTexture.Create(GameDevice.D3D11Device, 2048, 2048);
 
-	DebugCam.CreateViewMatrix(Vector3(0, 10, -10), Vector3(0, 45, 0), Vector3(0, 1, 0));
-	DebugCam.CreateProjMatrix(1.0f, 10000.0f, 3.141592 * 0.25f, (float)ClientRect.right / (float)ClientRect.bottom);
-	DebugCam.CameraFrustum.CreateFrustum(&DebugCam.ViewMat, &DebugCam.ProjMat);
+	
 	Init();
+	if (IsGame2D == false)
+	{
+		DebugCam.CreateViewMatrix(Vector3(0, 10, -10), Vector3(0, 45, 0), Vector3(0, 1, 0));
+		DebugCam.CreateProjMatrix(1.0f, 10000.0f, 3.141592 * 0.25f, (float)ClientRect.right / (float)ClientRect.bottom);
+		DebugCam.CameraFrustum.CreateFrustum(&DebugCam.ViewMat, &DebugCam.ProjMat);
+	}
 	return true;
 }
 
@@ -261,11 +265,14 @@ void GameCore::ReSizeWindow(UINT width, UINT height)
 	GameWriter.SetClientRect(ClientRect);
 	GameWriter.Set(_BackBuffer);
 
-	DebugCam.UpdateProjMatrix((float)ClientRect.right / (float)ClientRect.bottom);
+	if (IsGame2D == false)
+	{
+		DebugCam.UpdateProjMatrix((float)ClientRect.right / (float)ClientRect.bottom);
 
-	DebugCam.CreateProjMatrix(DebugCam.Near, DebugCam.Far, DebugCam.Fov, (float)ClientRect.right / (float)ClientRect.bottom);
+		DebugCam.CreateProjMatrix(DebugCam.Near, DebugCam.Far, DebugCam.Fov, (float)ClientRect.right / (float)ClientRect.bottom);
 
-	DebugCam.CameraFrustum.CreateFrustum(&DebugCam.ViewMat, &DebugCam.ProjMat);
+		DebugCam.CameraFrustum.CreateFrustum(&DebugCam.ViewMat, &DebugCam.ProjMat);
+	}
 	
 	_BackBuffer->Release();
 	_BackBuffer = nullptr;
