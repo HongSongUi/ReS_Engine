@@ -57,5 +57,5 @@ void Object3D::UpdatePosition(Vector3& pos)
 
 void Object3D::UpdateScale(Vector3& scale)
 {
-	Scale = scale
+	Scale = scale;
 }

@@ -32,7 +32,6 @@ public:
 	void SetMatrix(Matrix* world, Matrix* view, Matrix* proj);
 	virtual void SetListSize() override;
 	virtual bool Render()override;
-	virtual void SetDirLine();
 	virtual bool Release()override;
 	virtual void UpdatePosition(Vector3& pos);
 	virtual void UpdateScale(Vector3& scale);
