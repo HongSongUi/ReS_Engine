@@ -7,5 +7,6 @@ public:
 	virtual void CreateProjMatrix(float n, float f, float FoVy, float aspect)override;
 	virtual void UpdateProjMatrix(float aspect)override;
 	virtual bool Frame() override;
+
 };
 

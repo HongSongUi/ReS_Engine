@@ -3,16 +3,18 @@
 #include "Frustum.h"
 class Camera3D : public DefaultCamera
 {
-protected:
-	Matrix ViewMat;
-	Matrix ProjMat;
+
+public:
+
 	Vector3 Position;
 	Vector3 Target = { 0.f,0.f,0.f };
 	Vector3 UpVec = { 0.f,1.f,0.f };
 	Vector3 RightVec;
 	Vector3 LookVec;
+
+	Matrix ViewMat;
+	Matrix ProjMat;
 	Frustum CameraFrustum;
-	
 	float Near;
 	float Far;
 	float Fov;
@@ -21,6 +23,8 @@ protected:
 	float Yaw = 0.f;
 	float Pitch = 0.f;
 	float Roll = 0.f;
+
+
 public:
 	virtual bool Init() override;
 	virtual bool Frame() override;

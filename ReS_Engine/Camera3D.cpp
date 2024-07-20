@@ -99,3 +99,5 @@ void Camera3D::UpdateProjMatrix(float aspect)
     Aspect = aspect;
     D3DXMatrixPerspectiveFovLH(&ProjMat, Fov, Aspect, Near, Far);
 }
+
+

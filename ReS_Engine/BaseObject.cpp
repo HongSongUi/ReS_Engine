@@ -102,6 +102,22 @@ bool BaseObject::Load(std::wstring ShaderFileName, std::wstring TextureFileName,
     return true;
 }
 
+bool BaseObject::CreateVertex()
+{
+    SetVertexList();
+    InitVertexList = VertexList;
+    SetIndexList();
+    Mesh.SetVertexList(VertexList);
+    Mesh.SetIndexList(IndexList);
+    Mesh.SetShader(ShaderFile);
+    Mesh.SetTexture(TextureFile);
+    if (Mesh.Create() == false)
+    {
+        return false;
+    }
+    return true;
+}
+
 HRESULT BaseObject::ShaderCompile(std::wstring ShaderFileName)
 {
     HRESULT hr;

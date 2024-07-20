@@ -35,6 +35,7 @@ public:
 	virtual bool SetData(ID3D11Device* device, ID3D11DeviceContext* context, RECT clientRt);
 	virtual bool Load(std::wstring ShaderFileName, std::wstring TextureFileName);
 	virtual bool Load(std::wstring ShaderFileName, std::wstring TextureFileName, std::wstring MaskFile);
+	virtual bool CreateVertex();
 protected:
 	virtual HRESULT ShaderCompile(std::wstring ShaderFileName);
 	virtual HRESULT LoadTexture(std::wstring TextureFileName);
