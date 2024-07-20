@@ -22,7 +22,7 @@ public:
 	bool Frame();
 	bool Release();
 private:
-	SoundManager();
+	SoundManager() {};
 public:
 	~SoundManager();
 };

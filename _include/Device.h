@@ -1,5 +1,5 @@
 #pragma once
-#include "X_Header.h"
+#include <memory>
 #include <d3dcompiler.h>
 #include <d3d11.h>
 #pragma comment(lib, "d3d11.lib")
@@ -7,18 +7,17 @@
 #pragma comment(lib, "dxgi.lib")
 class Device
 {
-public:
-
-	ID3D11Device* _p3dDevice = nullptr;
-	ID3D11DeviceContext* _p3dContext = nullptr;
-	IDXGIFactory* _pGIFactory = nullptr;
-	IDXGISwapChain* _pSwapChain = nullptr;
-	ID3D11RenderTargetView* _pRenderTargetView = nullptr;
-	ID3D11DepthStencilView* _pDepthStencilView = nullptr;
-	D3D11_VIEWPORT _ViewPort;
 private:
-	RECT _ClientRt;
-	HWND _Hwnd;
+	RECT ClientRect;
+	HWND Hwnd;
+public:
+	ID3D11Device*	D3D11Device = nullptr;
+	ID3D11DeviceContext*	D3D11Context = nullptr;
+	IDXGIFactory*			GIFactory = nullptr;
+	IDXGISwapChain*			SwapChain = nullptr;
+	ID3D11RenderTargetView* RenderTargetView = nullptr;
+	ID3D11DepthStencilView* DepthStencilView = nullptr;
+	D3D11_VIEWPORT			ViewPort;
 public:
 	bool Init();
 	bool Frame();
@@ -35,5 +34,7 @@ public:
 	HRESULT CreateDepthStencilView();
 	void	CreateViewPort();
 	void	SetWindowData(RECT ClientRt, HWND Hwnd);
+	ID3D11Device* GetDevice();
+	ID3D11DeviceContext* GetContext();
 };
 

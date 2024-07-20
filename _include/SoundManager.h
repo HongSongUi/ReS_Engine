@@ -1,18 +1,19 @@
 #pragma once
 #include <map>
 #include <list>
-#include "X_Sound.h"
-class SoundManager:public X_Singleton<SoundManager>
+#include "GameSound.h"
+#include "ReSUtility.h"
+class SoundManager: public Singleton<SoundManager>
 {
 public:
-	FMOD::System* _System;
+	FMOD::System* FSystem;
 	std::list<std::wstring> fileList;
 private:
-	friend class X_Singleton<SoundManager>;
-	std::map<std::wstring, X_Sound*> DataList;
+	friend class Singleton<SoundManager>;
+	std::map<std::wstring, GameSound*> SoundList;
 public:
-	X_Sound* Load(std::wstring filename);
-	X_Sound* Find(std::wstring name);
+	GameSound* Load(std::wstring filename);
+	GameSound* Find(std::wstring name);
 	void LoadDir(std::wstring path);
 	void LoadAll(std::wstring path);
 	std::wstring GetSplitName(std::wstring path);
@@ -21,9 +22,9 @@ public:
 	bool Frame();
 	bool Release();
 private:
-	SoundManager();
+	SoundManager() {};
 public:
 	~SoundManager();
 };
-
 #define SoundMgr SoundManager::GetInstance()
+

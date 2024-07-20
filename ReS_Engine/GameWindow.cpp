@@ -101,7 +101,8 @@ bool GameWindow::Run()
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
-        else {
+        else 
+        {
             return true;
         }
     }

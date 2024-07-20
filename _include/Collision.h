@@ -1,20 +1,80 @@
 #pragma once
-#include "X_Rect.h"
-/*#include "Circle.h"
-#include "Box.h"
-#include "Sphere.h"*/
+#include "MathLib.h"
+#define CalcEpsilon 0.0001f
 
-/**
-* 수정 필요
-*/
+enum HCollisionType
+{
+	RECT_OUT = 0,
+	RECT_IN,
+	RECT_OVERLAP,
+};
+
+struct Rect
+{
+public:
+	Vector2 Center;
+	Vector2 Min;
+	Vector2 Max;
+	Vector2 Size;
+public:
+	Rect();
+	Rect(Vector2 cen, Vector2 size);
+	Rect(float left, float top, float right, float bottom);
+public:
+	void SetRect(Vector2 cen, Vector2 size);
+	void SetRect(float left, float top, float right, float bottom);
+public:
+	bool operator== (Rect& r);
+};
+
+struct Sphere
+{
+public:
+	Vector3 Center;
+	float Radius;
+public:
+	Sphere();
+	Sphere(Vector3 cen, float rad);
+};
+
+struct Box
+{
+public:
+	Vector3 Center;
+	Vector3 Pos[8];
+
+	Vector3 Max;
+	Vector3 Min;
+
+	Vector3 Axis[3];
+	float Extent[3];
+	//Object3D* _parent;
+public:
+	Box();
+	Box(Vector3 max, Vector3 min);
+	void SetBox(Vector3 max, Vector3 min);
+	//void SetParent(Object3D* parent);
+};
+
+struct Ray
+{
+	float Extent;
+	Vector3 Origin;
+	Vector3 Direction;
+	Ray()
+	{
+		Extent = -1;
+	}
+};
+
 class Collision
 {
 public:
-	static bool RectToInRect(X_Rect& a, X_Rect& b);
-	static bool RectToRect(X_Rect& a, X_Rect& b);
-//	static bool CircleToCircle(Circle& a, Circle& b);
-//public:
-//	static bool BoxToInBox(Box& a, Box& b);
-//	static bool BoxToBox(Box& a, Box& b);
-//	static bool SphereToSphere(Sphere& a, Sphere& b);
+	static bool RectToRect(Rect& a, Rect& b);
+public:
+	static HCollisionType   BoxToBox(Box& a, Box& b);
+	static bool             BoxToInBox(Box& a, Box& b);
+	static bool             BoxToPosition(Box& a, Vector3& p);
+	static bool             SphereToSphere(Sphere& a, Sphere& b);
 };
+

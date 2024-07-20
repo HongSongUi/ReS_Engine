@@ -52,34 +52,40 @@ bool GameCore::PostProcess()
 
 bool GameCore::CoreInit()
 {
+	IsGame2D = false;
 	GameDevice.SetWindowData(Window.ClientRect, Window.Hwnd);
 
 	ClientRect = Window.ClientRect;
 	GameDevice.Init();
+	TextureMgr.InitMgr(GameDevice.D3D11Device, GameDevice.D3D11Context);
+	ShaderMgr.InitMgr(GameDevice.D3D11Device, GameDevice.D3D11Context);
+	GameInput.SetWinHwnd(Window.Hwnd);
+	GameInput.Init();
+	SoundMgr.Init();
+	GameTimer.Init();
+	
 	GameWriter.Init();
 	IDXGISurface1* BackBuffer = nullptr;
 	GameDevice.SwapChain->GetBuffer(0, __uuidof(IDXGISurface1), (void**)&BackBuffer);
 
-	TextureMgr.InitMgr(GameDevice.D3D11Device.get(), GameDevice.D3D11Context.get());
-	ShaderMgr.InitMgr(GameDevice.D3D11Device.get(), GameDevice.D3D11Context.get());
-	GameInput.SetWinHwnd(Window.Hwnd);
 
-	SoundMgr.Init();
-	GameTimer.Init();
-	GameInput.Init();
-	DxState::SetState(GameDevice.D3D11Device.get());
+	DxState::SetState(GameDevice.D3D11Device);
 	GameWriter.SetClientRect(ClientRect);
 	GameWriter.Set(BackBuffer);
 
 	BackBuffer->Release();
 	BackBuffer = nullptr;
-	RenderTarget.SetData(GameDevice.D3D11Device.get(), GameDevice.D3D11Context.get(), ClientRect);
+	RenderTarget.SetData(GameDevice.D3D11Device, GameDevice.D3D11Context, ClientRect);
 	RenderTarget.Load(L"../_shader/DefaultShader.txt", L"../_Texture/StageSelect.png");
 	if (RenderTarget.CreateVertex() == false)
 	{
 		return false;
 	}
-	RenderTexture.Create(GameDevice.D3D11Device.get(), 2048, 2048);
+	RenderTexture.Create(GameDevice.D3D11Device, 2048, 2048);
+
+	DebugCam.CreateViewMatrix(Vector3(0, 10, -10), Vector3(0, 45, 0), Vector3(0, 1, 0));
+	DebugCam.CreateProjMatrix(1.0f, 10000.0f, 3.141592 * 0.25f, (float)ClientRect.right / (float)ClientRect.bottom);
+	DebugCam.CameraFrustum.CreateFrustum(&DebugCam.ViewMat, &DebugCam.ProjMat);
 	Init();
 	return true;
 }
@@ -105,10 +111,10 @@ bool GameCore::CoreFrame()
 bool GameCore::CorePreRender()
 {
 	GameDevice.PreRender();
-	GameDevice.D3D11Context.get()->PSSetSamplers(0, 1, &DxState::_DefaultSS);
-	GameDevice.D3D11Context.get()->RSSetState(DxState::_DefaultRSSolid);
-	GameDevice.D3D11Context.get()->OMSetBlendState(DxState::_DefaultBS, 0, -1);
-	GameDevice.D3D11Context.get()->OMSetDepthStencilState(DxState::_DefaultDepthStencil, 0xff);
+	GameDevice.D3D11Context->PSSetSamplers(0, 1, &DxState::_DefaultSS);
+	GameDevice.D3D11Context->RSSetState(DxState::_DefaultRSSolid);
+	GameDevice.D3D11Context->OMSetBlendState(DxState::_DefaultBS, 0, -1);
+	GameDevice.D3D11Context->OMSetDepthStencilState(DxState::_DefaultDepthStencil, 0xff);
 	return true;
 }
 
@@ -139,13 +145,13 @@ bool GameCore::CoreRender()
 	//RenderTarget.SetMatrix(nullptr, nullptr, nullptr);
 	RenderTarget.Render();
 
-	/// ////////////////////////////////////////////
+	///// ////////////////////////////////////////////
 	GameTimer.Render();
 	GameInput.Render();
 
 	CorePostRender();
 
-	return false;
+	return true;
 }
 
 bool GameCore::CoreRelease()
@@ -154,14 +160,15 @@ bool GameCore::CoreRelease()
 
 	GameDevice.Release();
 	
-	GameWriter.Release();
-	DxState::Release();
+	
+
 	GameInput.Release();
 	GameTimer.Release();
 	SoundMgr.Release();
 	ShaderMgr.Release();
 	TextureMgr.Release();
-
+	GameWriter.Release();
+	DxState::Release();
 	RenderTarget.Release();
 	RenderTexture.Release();
 	return true;
@@ -170,7 +177,7 @@ bool GameCore::CoreRelease()
 bool GameCore::SetWindow(HINSTANCE hInstance, const WCHAR* Title, UINT width, UINT height)
 {
 	Window.SetWindow(hInstance, Title, width, height);
-	return false;
+	return true;
 }
 
 bool GameCore::Run()
@@ -220,11 +227,11 @@ void GameCore::ClearD3D11DeviceContext()
 	ID3D11Buffer* pBuffers[16] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 	ID3D11SamplerState* pSamplers[16] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 	UINT StrideOffset[16] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
-	GameDevice.D3D11Context.get()->VSSetShaderResources(0, 16, pSRVs);
+	GameDevice.D3D11Context->VSSetShaderResources(0, 16, pSRVs);
 	//pd3dDeviceContext->HSSetShaderResources(0, 16, pSRVs);
 	//pd3dDeviceContext->DSSetShaderResources(0, 16, pSRVs);
 	//pd3dDeviceContext->GSSetShaderResources(0, 16, pSRVs);
-	GameDevice.D3D11Context.get()->PSSetShaderResources(0, 16, pSRVs);
+	GameDevice.D3D11Context->PSSetShaderResources(0, 16, pSRVs);
 
 }
 
@@ -246,7 +253,6 @@ void GameCore::ReSizeWindow(UINT width, UINT height)
 	GameWriter.DeleteDxResource();
 	ClientRect = Window.GetClientRtSize();
 
-
 	GameDevice.ResizeWindow(width, height);
 	IDXGISurface1* _BackBuffer = nullptr;
 	GameWriter.Init();
@@ -255,9 +261,12 @@ void GameCore::ReSizeWindow(UINT width, UINT height)
 	GameWriter.SetClientRect(ClientRect);
 	GameWriter.Set(_BackBuffer);
 
+	DebugCam.UpdateProjMatrix((float)ClientRect.right / (float)ClientRect.bottom);
+
 	DebugCam.CreateProjMatrix(DebugCam.Near, DebugCam.Far, DebugCam.Fov, (float)ClientRect.right / (float)ClientRect.bottom);
 
 	DebugCam.CameraFrustum.CreateFrustum(&DebugCam.ViewMat, &DebugCam.ProjMat);
+	
 	_BackBuffer->Release();
 	_BackBuffer = nullptr;
 
@@ -267,12 +276,12 @@ void GameCore::ReSizeWindow(UINT width, UINT height)
 
 ID3D11Device* GameCore::GetDevice()
 {
-	return GameDevice.D3D11Device.get();
+	return GameDevice.D3D11Device;
 }
 
 ID3D11DeviceContext* GameCore::GetContext()
 {
-	return GameDevice.D3D11Context.get();
+	return GameDevice.D3D11Context;
 }
 
 HWND GameCore::GetWindowHwnd()

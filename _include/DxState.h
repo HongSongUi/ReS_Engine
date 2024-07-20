@@ -1,5 +1,9 @@
 #pragma once
-#include "Device.h"
+#include <d3dcompiler.h>
+#include <d3d11.h>
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "d3dcompiler.lib")
+#pragma comment(lib, "dxgi.lib")
 class DxState
 {
 public:
@@ -8,7 +12,8 @@ public:
 	static ID3D11RasterizerState* _DefaultRSWireFrame;
 	static ID3D11RasterizerState* _DefaultRSSolid;
 	static ID3D11DepthStencilState* _DefaultDepthStencil;
-	static HRESULT SetState(ID3D11Device* );
+public:
+	static bool SetState(ID3D11Device* d3dDevice);
 	static bool Release();
 };
 

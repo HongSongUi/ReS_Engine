@@ -1,39 +1,33 @@
 #pragma once
-#include "X_Header.h"
-#include "X_Win.h"
+#include "GameWindow.h"
 #include "Device.h"
-#include "X_Timer.h"
-#include "X_Input.h"
-#include "X_Writer.h"
+#include "Timer.h"
+#include "Input.h"
+#include "Writer.h"
 #include "TextureManager.h"
 #include "ShaderManager.h"
 #include "SoundManager.h"
 #include "DxState.h"
-#include "X_BaseObject.h"
+#include "BaseObject.h"
 #include "RenderToTexture.h"
-#include "DebugCam.h"
+#include "DebugCamera.h"
+
 class GameCore
 {
 protected:
-	ID3D11Device*			_Device = nullptr;
-	ID3D11DeviceContext*	_Context = nullptr;
-	X_BaseObject			_RenderTarget;
-	X_Win					_Window;
-	X_Writer				_Writer;
-	X_Writer				_XVec;
-	X_Writer				_YVec;
-	X_Writer				_ZVec;
-	std::wstring			_CamPos;
-	std::wstring			_CamTarget;
-	std::wstring			_CamUp;
-	HWND					_Hwnd;
-	RECT					_ClientRect;
-	RenderToTexture			_RT;
-	Device					_DX;
+	ID3D11Device*			D3D11Device = nullptr;
+	ID3D11DeviceContext*	D3D11Context = nullptr;
+	BaseObject			RenderTarget;
+	GameWindow			Window;
+	Device				GameDevice;
+	HWND				Hwnd;
+	Writer				GameWriter;
+	RECT				ClientRect;
+	RenderToTexture		RenderTexture;
 public:
-	X_Writer				_CamData;
-	DebugCam				_DbgCam;
-	bool					_GameRun;
+	DebugCamera		DebugCam;
+	bool			IsGameRun;
+	bool			IsGame2D;
 public:
 	virtual bool Init();
 	virtual bool Render();
@@ -52,7 +46,6 @@ public:
 	bool CoreRelease();
 	bool CorePreRender();
 	bool CorePostRender();
-
 public:
 	bool					Run();
 	bool					ToolRun();

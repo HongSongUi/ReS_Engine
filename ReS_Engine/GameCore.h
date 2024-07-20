@@ -27,6 +27,7 @@ protected:
 public:
 	DebugCamera		DebugCam;
 	bool			IsGameRun;
+	bool			IsGame2D;
 public:
 	virtual bool Init();
 	virtual bool Render();

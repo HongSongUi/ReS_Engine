@@ -11,8 +11,8 @@ private:
 	RECT ClientRect;
 	HWND Hwnd;
 public:
-	std::shared_ptr<ID3D11Device>	D3D11Device = nullptr;
-	std::shared_ptr<ID3D11DeviceContext>	D3D11Context = nullptr;
+	ID3D11Device*	D3D11Device = nullptr;
+	ID3D11DeviceContext*	D3D11Context = nullptr;
 	IDXGIFactory*			GIFactory = nullptr;
 	IDXGISwapChain*			SwapChain = nullptr;
 	ID3D11RenderTargetView* RenderTargetView = nullptr;
@@ -34,7 +34,7 @@ public:
 	HRESULT CreateDepthStencilView();
 	void	CreateViewPort();
 	void	SetWindowData(RECT ClientRt, HWND Hwnd);
-	std::shared_ptr<ID3D11Device> GetDevice();
-	std::shared_ptr<ID3D11DeviceContext> GetContext();
+	ID3D11Device* GetDevice();
+	ID3D11DeviceContext* GetContext();
 };
 

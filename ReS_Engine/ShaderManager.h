@@ -10,7 +10,7 @@ private:
 	friend class Singleton<ShaderManager>;
 	std::map<std::wstring, Shader*> ShaderList;
 private:
-	ShaderManager();
+	ShaderManager() {};
 public:
 	void InitMgr(ID3D11Device* Device, ID3D11DeviceContext* Context);
 	Shader* Load(std::wstring FineName);

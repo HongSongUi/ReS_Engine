@@ -71,6 +71,7 @@ bool BaseObject::SetData(ID3D11Device* device, ID3D11DeviceContext* context, REC
 {
     D3D11Device = device;
     D3D11Context = context;
+    Mesh.SetDevice(device, context);
     ClientRect = clientRt;
     return true;
 }

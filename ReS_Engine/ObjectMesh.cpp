@@ -8,15 +8,16 @@ bool ObjectMesh::Init()
 
 bool ObjectMesh::Frame()
 {
-	if (VertexBuffer) VertexBuffer->Release();
-	if (IndexBuffer) IndexBuffer->Release();
-	if (ConstantBuffer) ConstantBuffer->Release();
-	if (InputLayout) InputLayout->Release();
+
     return true;
 }
 
 bool ObjectMesh::Release()
 {
+	if (VertexBuffer) VertexBuffer->Release();
+	if (IndexBuffer) IndexBuffer->Release();
+	if (ConstantBuffer) ConstantBuffer->Release();
+	if (InputLayout) InputLayout->Release();
     return true;
 }
 

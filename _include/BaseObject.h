@@ -1,36 +1,26 @@
 #pragma once
-#include "Rect.h"
-
-#include <fstream>
-#include "X_Vertex.h"
-#include "X_Math.h"
+#include "Collision.h"
+#include "ObjectMesh.h"
+#include "ReSUtility.h"
 class BaseObject
 {
+public:
+	ID3D11Device* D3D11Device;
+	ID3D11DeviceContext* D3D11Context;
+	RECT ClientRect;
+	ObjectMesh Mesh;
 
-public:
-	X_Vertex _ObjVertex;
-	X_Texture* _Mask = nullptr;
-	RECT _ClientRt;
-	ID3D11Device* _Device;
-	ID3D11DeviceContext* _Context;
-	X_Texture* _Texture;
-	X_Shader* _Shader;
-	std::vector<vertex> _VertexList;
-	std::vector<vertex> _InitVertexList;
-	std::vector<DWORD> _IndexList;
-	bool _Inverse = true;
-	
-public:
-	float _Mass;
-	float _Speed;
+	class Texture*	MaskTexture = nullptr;
+	class Texture*	TextureFile;
+	class Shader*	ShaderFile;
+
+	std::vector<Vertex> VertexList;
+	std::vector<Vertex> InitVertexList;
+	std::vector<unsigned int> IndexList;
 public:
 	BaseObject() {
 		SetListSize();
 	};
-	virtual ~BaseObject() {};
-protected:
-	virtual HRESULT ShaderCompile(std::wstring ShaderFile);
-	virtual HRESULT LoadTexture(std::wstring TextureFile);
 public:
 	virtual bool Init();
 	virtual bool Frame();
@@ -38,21 +28,16 @@ public:
 	virtual bool Release();
 	virtual bool PreRender();
 	virtual bool PostRender();
-	void UpdateVertexList();
-	virtual void UpdatePosition() {};
-	virtual void SetMatrix(H_Matrix* world, H_Matrix* view, H_Matrix* proj);
-public:
-	virtual void SetPhysics() {};
-	virtual void SetPosition(H_Vector2 pos) {};
-	void SetMask(std::wstring MaskFile);
-	void SetClientSize(RECT clientRt);
 	virtual void SetVertexList();
 	virtual void SetIndexList();
 	virtual void SetListSize();
-	void SetSRV(ID3D11ShaderResourceView* srv);
 public:
 	virtual bool SetData(ID3D11Device* device, ID3D11DeviceContext* context, RECT clientRt);
-	virtual bool Load(std::wstring ShaderFile, std::wstring TextureFile);
+	virtual bool Load(std::wstring ShaderFileName, std::wstring TextureFileName);
+	virtual bool Load(std::wstring ShaderFileName, std::wstring TextureFileName, std::wstring MaskFile);
 	virtual bool CreateVertex();
+protected:
+	virtual HRESULT ShaderCompile(std::wstring ShaderFileName);
+	virtual HRESULT LoadTexture(std::wstring TextureFileName);
 };
 

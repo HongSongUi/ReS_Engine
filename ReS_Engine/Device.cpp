@@ -63,14 +63,12 @@ bool Device::Release()
 	RenderTargetView = nullptr;
 	DepthStencilView = nullptr;
 	return true;
-	return false;
 }
 
 HRESULT Device::CreateDevice()
 {
 	HRESULT hr;
-	ID3D11Device* device = nullptr;
-	ID3D11DeviceContext* context = nullptr;
+
 	UINT CreateDeviceFlags = D3D11_CREATE_DEVICE_BGRA_SUPPORT;
 #ifdef _DEBUG
 	CreateDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
@@ -79,9 +77,8 @@ HRESULT Device::CreateDevice()
 	D3D_FEATURE_LEVEL FeatureLevel;
 	D3D_FEATURE_LEVEL FeatureLevels[] = { D3D_FEATURE_LEVEL_11_0 };
 	hr = D3D11CreateDevice(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, CreateDeviceFlags, FeatureLevels, 1, D3D11_SDK_VERSION,
-		&device, &FeatureLevel, &context);
-	D3D11Device = std::shared_ptr<ID3D11Device>(device, [](ID3D11Device* p) { if (p) p->Release(); });
-	D3D11Context = std::shared_ptr<ID3D11DeviceContext>(context, [](ID3D11DeviceContext* p) { if (p) p->Release(); });
+		&D3D11Device, &FeatureLevel, &D3D11Context);
+
 	return hr;
 }
 
@@ -109,7 +106,7 @@ HRESULT Device::CreateSwapChain()
 	sd.SampleDesc.Quality = 0;
 	sd.Windowed = true;
 	sd.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
-	hr = GIFactory->CreateSwapChain(D3D11Device.get(), &sd, &SwapChain);
+	hr = GIFactory->CreateSwapChain(D3D11Device, &sd, &SwapChain);
 	return hr;
 }
 
@@ -139,10 +136,12 @@ HRESULT Device::ResizeWindow(UINT width, UINT height)
 	DXGI_SWAP_CHAIN_DESC CurrentSD;// , AfterSD;
 	SwapChain->GetDesc(&CurrentSD);
 	hr = SwapChain->ResizeBuffers(CurrentSD.BufferCount, width, height, CurrentSD.BufferDesc.Format, 0);
-	if (FAILED(CreateRenderTargetView())) {
+	if (FAILED(CreateRenderTargetView())) 
+	{
 		return S_FALSE;
 	}
-	if (FAILED(CreateDepthStencilView())) {
+	if (FAILED(CreateDepthStencilView())) 
+	{
 		return S_FALSE;
 	}
 	CreateViewPort();
@@ -197,13 +196,12 @@ void Device::SetWindowData(RECT ClientRt, HWND Hwnd)
 	ClientRect = ClientRt;
 	this->Hwnd = Hwnd;
 }
-
-std::shared_ptr<ID3D11Device> Device::GetDevice()
+ID3D11Device* Device::GetDevice()
 {
 	return D3D11Device;
 }
 
-std::shared_ptr<ID3D11DeviceContext> Device::GetContext()
+ID3D11DeviceContext* Device::GetContext()
 {
 	return D3D11Context;
 }

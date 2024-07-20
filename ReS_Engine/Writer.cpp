@@ -28,7 +28,6 @@ bool Writer::Release()
 
     if (WriteFactory)WriteFactory->Release();
     if (D2DFactory)D2DFactory->Release();
-    if (TextFormat) TextFormat->Release();
     return true;
 }
 
@@ -70,8 +69,8 @@ void Writer::SetClientRect(RECT rect)
 
 HRESULT Writer::DeleteDxResource()
 {
-    if (TextColor)TextColor->Release();
-    if (D2DRenderTarget)D2DRenderTarget->Release();
+    if (TextColor) TextColor->Release();
+    if (D2DRenderTarget) D2DRenderTarget->Release();
     TextColor = nullptr;
     D2DRenderTarget = nullptr;
     return S_OK;
@@ -79,5 +78,5 @@ HRESULT Writer::DeleteDxResource()
 
 HRESULT Writer::CreateDxResource()
 {
-    return E_NOTIMPL;
+    return S_OK;
 }
