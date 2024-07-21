@@ -3,7 +3,8 @@
 
 bool Sample::Init()
 {
- 
+    Test.SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
+    Test.Init();
     return true;
 }
 
@@ -14,11 +15,17 @@ bool Sample::Frame()
 
 bool Sample::Render()
 {
+    Test.Render();
+    //GameCore::GetContext()->RSSetState(DxState::_DefaultRSWireFrame);
+    // Test.PreRender();
+    //GameCore::GetContext()->PSSetShaderResources(1, 1, &Test.MaskTexture->TextureSRV);
+    //  Test.PostRender();
     return true;
 }
 
 bool Sample::Release()
 {
+    Test.Release();
     return true;
 }
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,

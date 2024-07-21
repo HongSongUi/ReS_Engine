@@ -76,15 +76,14 @@ bool GameCore::CoreInit()
 	BackBuffer->Release();
 	BackBuffer = nullptr;
 	RenderTarget.SetData(GameDevice.D3D11Device, GameDevice.D3D11Context, ClientRect);
-	RenderTarget.Load(L"../_shader/DefaultShader.txt", L"../_Texture/StageSelect.png");
+	RenderTarget.Load(L"../_shader/DefaultShader.txt", L"../_Texture/FadeOut.png");
 	if (RenderTarget.CreateVertex() == false)
 	{
 		return false;
 	}
 	RenderTexture.Create(GameDevice.D3D11Device, 2048, 2048);
-
-	
 	Init();
+
 	if (UseDebugCam == true)
 	{
 		DebugCam.CreateViewMatrix(Vector3(0, 10, -10), Vector3(0, 45, 0), Vector3(0, 1, 0));
@@ -137,10 +136,10 @@ bool GameCore::CoreRender()
 	RenderTexture.OldDepthStencil = GameDevice.DepthStencilView;
 	RenderTexture.OldRenderTarget = GameDevice.RenderTargetView;
 	RenderTexture.OldViewPort[0] = GameDevice.ViewPort;
-	if (RenderTexture.Begin(GetContext())) 
+	if (RenderTexture.Begin(GameDevice.D3D11Context))
 	{
 		Render();
-		RenderTexture.End(GetContext());
+		RenderTexture.End(GameDevice.D3D11Context);
 	}
 	if (RenderTexture.ShaderResourceView) 
 	{

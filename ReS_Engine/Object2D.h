@@ -6,17 +6,16 @@ private:
 	Vector2 NdcPos;
 	Vector2 NdcSize;
 public:
-	float Mass;
-	float Speed;
-	bool Inverse = true;
-public:
 	Rect TextureRt;
 	Rect UvRect;
 	Rect ShowRect;
 	POINT TextureSize;
+public:
 	Rect ObjectRect;
+
 	Vector2 Dir;
 	Vector2 Size;
+public:
 	Vector2 WorldPos;
 	Vector2 CamPos;
 	Vector2 CamSize;
@@ -28,11 +27,10 @@ public:
 public:
 	virtual bool Frame()override;
 	virtual void SetVertexList()override ;
-	void UpdateVertexList();
-	void SetPosition(Vector2 pos);
+	void SetPosition(Vector2 pos) override;
 	void ScreenToNdc();
 	void ScreenToView(Vector2 CamPos, Vector2 CamSize);
-	void SetPhysics() ;
-	void SetRect(Rect rt);
+	virtual void SetPhysics() override ;
+	void SetRect(Rect rt) ;
 };
 

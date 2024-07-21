@@ -1,10 +1,92 @@
 #include "BaseObject.h"
 #include "ShaderManager.h"
 #include "TextureManager.h"
+
+bool BaseObject::SetData(ID3D11Device* device, ID3D11DeviceContext* context, RECT clientRt)
+{
+    D3D11Device = device;
+    D3D11Context = context;
+    Mesh.SetDevice(device, context);
+    ClientRect = clientRt;
+    return true;
+}
+bool BaseObject::Load(std::wstring ShaderFileName, std::wstring TextureFileName)
+{
+    if (FAILED(ShaderCompile(ShaderFileName)))
+    {
+        return false;
+    }
+    if (FAILED(LoadTexture(TextureFileName)))
+    {
+        return false;
+    }
+    return true;
+}
+bool BaseObject::CreateVertex()
+{
+    SetVertexList();
+    InitVertexList = VertexList;
+    SetIndexList();
+    Mesh.SetVertexList(VertexList);
+    Mesh.SetIndexList(IndexList);
+    Mesh.SetShader(ShaderFile);
+    Mesh.SetTexture(TextureFile);
+    if (Mesh.Create() == false)
+    {
+        return false;
+    }
+    return true;
+}
+
+void BaseObject::UpdateVertexList()
+{
+    Mesh.SetVertexList(VertexList);
+    Mesh.UpdateVertexBuffer();
+}
+
+
+void BaseObject::SetVertexList()
+{
+    VertexList[0].Position = { -1.0f,1.0f,0.0f };
+    VertexList[0].Color = { 1.0f,1.0f,1.0f,1.0f };
+    VertexList[1].Position = { 1.0f,1.0f,0.0f };
+    VertexList[1].Color = { 0.0f,1.0f,1.0f,1.0f };
+    VertexList[2].Position = { -1.0f,-1.0f,0.0f };
+    VertexList[2].Color = { 1.0f,1.0f,0.0f,1.0f };
+    VertexList[3].Position = { 1.0f,-1.0f,0.0f };
+    VertexList[3].Color = { 1.0f,1.0f,1.0f,1.0f };
+    VertexList[0].Texture = { 0.0f, 0.0f };
+    VertexList[1].Texture = { 1.0f, 0.0f };
+    VertexList[2].Texture = { 0.0f, 1.0f };
+    VertexList[3].Texture = { 1.0f, 1.0f };
+}
+
+void BaseObject::SetIndexList()
+{
+    IndexList[0] = 0;
+    IndexList[1] = 1;
+    IndexList[2] = 2;
+    IndexList[3] = 2;
+    IndexList[4] = 1;
+    IndexList[5] = 3;
+}
+
+
 void BaseObject::SetListSize()
 {
     VertexList.resize(4);
     IndexList.resize(6);
+}
+
+void BaseObject::SetSRV(ID3D11ShaderResourceView* srv)
+{
+    Mesh.TextureData->TextureSRV = srv;
+}
+
+
+void BaseObject::SetMask(std::wstring MaskFile)
+{
+    MaskTexture = TextureMgr.Load(MaskFile);
 }
 
 bool BaseObject::Init()
@@ -41,82 +123,9 @@ bool BaseObject::PostRender()
     return true;
 }
 
-void BaseObject::SetVertexList()
+void BaseObject::SetClientSize(RECT clientRt)
 {
-    VertexList[0].Position = { -1.0f,1.0f,0.0f };
-    VertexList[0].Color = { 1.0f,1.0f,1.0f,1.0f };
-    VertexList[1].Position = { 1.0f,1.0f,0.0f };
-    VertexList[1].Color = { 0.0f,1.0f,1.0f,1.0f };
-    VertexList[2].Position = { -1.0f,-1.0f,0.0f };
-    VertexList[2].Color = { 1.0f,1.0f,0.0f,1.0f };
-    VertexList[3].Position = { 1.0f,-1.0f,0.0f };
-    VertexList[3].Color = { 1.0f,1.0f,1.0f,1.0f };
-    VertexList[0].Texture = { 0.0f, 0.0f };
-    VertexList[1].Texture = { 1.0f, 0.0f };
-    VertexList[2].Texture = { 0.0f, 1.0f };
-    VertexList[3].Texture = { 1.0f, 1.0f };
-}
-
-void BaseObject::SetIndexList()
-{
-    IndexList[0] = 0;
-    IndexList[1] = 1;
-    IndexList[2] = 2;
-    IndexList[3] = 2;
-    IndexList[4] = 1;
-    IndexList[5] = 3;
-}
-
-bool BaseObject::SetData(ID3D11Device* device, ID3D11DeviceContext* context, RECT clientRt)
-{
-    D3D11Device = device;
-    D3D11Context = context;
-    Mesh.SetDevice(device, context);
     ClientRect = clientRt;
-    return true;
-}
-
-bool BaseObject::Load(std::wstring ShaderFileName, std::wstring TextureFileName)
-{
-    if (FAILED(ShaderCompile(ShaderFileName)))
-    {
-        return false;
-    }
-    if (FAILED(LoadTexture(TextureFileName)))
-    {
-        return false;
-    }
-    return true;
-}
-
-bool BaseObject::Load(std::wstring ShaderFileName, std::wstring TextureFileName, std::wstring MaskFile)
-{
-    if (Load(ShaderFileName, TextureFileName) == false)
-    {
-        return false;
-    }
-    MaskTexture = TextureMgr.Load(MaskFile);
-    if (MaskTexture == nullptr)
-    {
-        return false;
-    }
-    return true;
-}
-
-bool BaseObject::CreateVertex()
-{
-    SetVertexList();
-    InitVertexList = VertexList;
-    SetIndexList();
-    Mesh.SetVertexList(VertexList);
-    Mesh.SetIndexList(IndexList);
-    Mesh.SetShader(ShaderFile);
-    Mesh.SetTexture(TextureFile);
-    if (Mesh.Create() == false)
-    {
-        return false;
-    }
-    return true;
 }
 
 HRESULT BaseObject::ShaderCompile(std::wstring ShaderFileName)
