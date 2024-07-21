@@ -2,7 +2,7 @@
 #include "Title.h"
 #include "TitleUI.h"
 #include "SoundManager.h"
-#include "TextureManager.h"
+
 bool TitleScene::Init()
 {
 	Nar = SoundMgr.Find(L"ROCK_X5_00587.wav");
@@ -16,6 +16,7 @@ bool TitleScene::Init()
 bool TitleScene::Render()
 {
 	GameTitle->Render();
+	
 	GameTitleUI->PreRender();
 	D3D11Context->PSSetShaderResources(1, 1, &GameTitleUI->MaskTexture->TextureSRV);
 	GameTitleUI->PostRender();
@@ -32,19 +33,19 @@ bool TitleScene::Release()
 bool TitleScene::Frame()
 {
 	BGM->Play();
-
-
 	GameTitleUI->Frame();
 
 	GameTitleUI->SetPosition({ 500,500 });
 	GameTitleUI->ScreenToNdc();
 	GameTitleUI->UpdateVertexList();
-	if (GameTitleUI->ChangeScene == true) {
+	if (GameTitleUI->ChangeScene == true) 
+	{
 		BGM->Stop();
 		ChangeScene = true;
 		GameTitleUI->ChangeScene = false;
 	}
-	else {
+	else 
+	{
 		ChangeScene = false;
 	}
 	return true;

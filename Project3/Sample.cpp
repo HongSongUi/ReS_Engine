@@ -1,32 +1,47 @@
 #include "Sample.h"
 #include "SoundManager.h"
-
+#include "TitleScene.h"
+#include "StageScene.h"
 bool Sample::Init()
 {
     SoundMgr.LoadAll(L"../_sound/");
-    Test.SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
+    Title = new TitleScene;
+    SelectStage = new StageScene;
+    Title->SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
+    SceneList.emplace_back(Title);
+    SelectStage->SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
+    SceneList.emplace_back(SelectStage);
+    SceneIndex = 0;
     return true;
 }
 
 bool Sample::Frame()
 {
-    Test.Frame();
+    SceneList[SceneIndex]->Frame();
+    if (SceneList[SceneIndex]->ChangeScene == true) 
+    {
+        SceneIndex++;
+        if (SceneIndex >= SceneList.size()) 
+        {
+            SceneIndex = SceneIndex - 1;
+        }
+    }
     return true;
 }
 
 bool Sample::Render()
 {
-    Test.Render();
-    //GameCore::GetContext()->RSSetState(DxState::_DefaultRSWireFrame);
-    // Test.PreRender();
-    //GameCore::GetContext()->PSSetShaderResources(1, 1, &Test.MaskTexture->TextureSRV);
-    //  Test.PostRender();
+    SceneList[SceneIndex]->Render();
     return true;
 }
 
 bool Sample::Release()
 {
-    Test.Release();
+    for (int i = 0; i < SceneList.size(); i++) {
+        SceneList[i]->Release();
+        delete SceneList[i];
+        SceneList[i] = nullptr;
+    }
     return true;
 }
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,

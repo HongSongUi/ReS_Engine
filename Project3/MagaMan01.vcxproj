@@ -147,6 +147,9 @@
   <ItemGroup>
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="StageScene.cpp" />
+    <ClCompile Include="StageSelect.cpp" />
+    <ClCompile Include="StageUI.cpp" />
     <ClCompile Include="TextLoader.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleScene.cpp" />
@@ -155,6 +158,9 @@
   <ItemGroup>
     <ClInclude Include="Sample.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="StageScene.h" />
+    <ClInclude Include="StageSelect.h" />
+    <ClInclude Include="StageUI.h" />
     <ClInclude Include="TextLoader.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="TitleScene.h" />

@@ -1,9 +1,12 @@
 #pragma once
+#include <vector>
 #include "GameCore.h"
-#include "TitleScene.h"
 class Sample :public GameCore
 {
-	TitleScene Test;
+	class TitleScene* Title;
+	class StageScene* SelectStage;
+	std::vector<class Scene*>  SceneList;
+	int SceneIndex = 0;
 public:
 	bool Init();
 	bool Frame();

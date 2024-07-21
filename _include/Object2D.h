@@ -27,6 +27,7 @@ public:
 public:
 	virtual bool Frame()override;
 	virtual void SetVertexList()override ;
+	virtual void UpdateVertexList() override;
 	void SetPosition(Vector2 pos) override;
 	void ScreenToNdc();
 	void ScreenToView(Vector2 CamPos, Vector2 CamSize);

@@ -1,25 +1,28 @@
 #include "TitleUI.h"
 #include "SoundManager.h"
 #include "Input.h"
+#include "TextLoader.h"
 #include <fstream>
 bool TitleUI::Init()
 {
 	SoundMgr.LoadAll(L"../_sound/SFX/");
-	Loader.LoadDir(L"../_Animation/UI/");
+	Loader = new TextLoader();
+	Loader->LoadDir(L"../_Animation/UI/");
 	TextInit();
 	SetMask(L"../_Texture/TitleUImask.bmp");
 	Load(L"../_shader/DefaultMaskShader.txt", L"../_Texture/TitleUI.bmp");
+
 	SetRect(FindSprite(L"TitleUi01.txt")[0]);
 	SelectSound = SoundMgr.Find(L"ROCK_X5_00169.wav");
 	ChooseSound = SoundMgr.Find(L"ROCK_X5_00546.wav");
 	CreateVertex();
+
 	return true;
 }
 
 void TitleUI::SetTexture(std::vector<Rect> TextureName)
 {
 	Sprite = TextureName;
-
 }
 
 bool TitleUI::Frame()
@@ -78,11 +81,11 @@ std::vector<Rect> TitleUI::FindSprite(std::wstring name)
 
 void TitleUI::TextInit()
 {
-	for (int i = 0; i < Loader.fileList.size(); i++) 
+	for (int i = 0; i < Loader->fileList.size(); i++) 
 	{
 		int num = 0;
-		std::ifstream file_stream(Loader.fileList[i]);
-		std::wstring name = Loader.GetSplitName(Loader.fileList[i]);
+		std::ifstream file_stream(Loader->fileList[i]);
+		std::wstring name = Loader->GetSplitName(Loader->fileList[i]);
 		file_stream >> num;
 		UIList.reserve(num);
 		while (file_stream.eof() == false) {

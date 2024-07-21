@@ -1,6 +1,6 @@
 #pragma once
 #include "Scene.h"
-
+#include "TextureManager.h"
 class TitleScene : public Scene
 {
 	class GameSound* BGM;

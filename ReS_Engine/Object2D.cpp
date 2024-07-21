@@ -38,6 +38,12 @@ void Object2D::SetVertexList()
     }
 }
 
+void Object2D::UpdateVertexList()
+{
+    SetVertexList();
+    Mesh.SetVertexList(VertexList);
+    Mesh.UpdateVertexBuffer();
+}
 
 
 void Object2D::SetPosition(Vector2 pos)

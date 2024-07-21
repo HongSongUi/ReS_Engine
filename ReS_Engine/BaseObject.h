@@ -46,7 +46,7 @@ public:
 	virtual bool Release();
 	virtual bool PreRender();
 	virtual bool PostRender();
-	void UpdateVertexList();
+	virtual void UpdateVertexList();
 	virtual void UpdatePosition() {};
 	virtual void SetMatrix(Matrix* world, Matrix* view, Matrix* proj) {};
 	virtual void SetLight(Vector4* lightDir, Vector4* lightPos, Vector4* eyePos, Vector4* eyeDir) {};

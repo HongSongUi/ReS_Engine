@@ -40,6 +40,7 @@ bool BaseObject::CreateVertex()
 
 void BaseObject::UpdateVertexList()
 {
+    //SetVertexList();
     Mesh.SetVertexList(VertexList);
     Mesh.UpdateVertexBuffer();
 }
