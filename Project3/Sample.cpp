@@ -1,15 +1,16 @@
 #include "Sample.h"
-
+#include "SoundManager.h"
 
 bool Sample::Init()
 {
+    SoundMgr.LoadAll(L"../_sound/");
     Test.SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
-    Test.Init();
     return true;
 }
 
 bool Sample::Frame()
 {
+    Test.Frame();
     return true;
 }
 

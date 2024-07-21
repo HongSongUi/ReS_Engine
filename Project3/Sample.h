@@ -1,9 +1,9 @@
 #pragma once
 #include "GameCore.h"
-#include "Title.h"
+#include "TitleScene.h"
 class Sample :public GameCore
 {
-	Title Test;
+	TitleScene Test;
 public:
 	bool Init();
 	bool Frame();
