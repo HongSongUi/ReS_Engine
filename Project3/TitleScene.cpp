@@ -33,11 +33,13 @@ bool TitleScene::Release()
 bool TitleScene::Frame()
 {
 	BGM->Play();
+	
 	GameTitleUI->Frame();
 
 	GameTitleUI->SetPosition({ 500,500 });
-	GameTitleUI->ScreenToNdc();
-	GameTitleUI->UpdateVertexList();
+	GameTitleUI->ShowObject();
+	//GameTitleUI->ScreenToNdc();
+	//GameTitleUI->UpdateVertexList();
 	if (GameTitleUI->ChangeScene == true) 
 	{
 		BGM->Stop();

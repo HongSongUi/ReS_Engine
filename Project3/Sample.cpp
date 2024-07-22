@@ -2,15 +2,21 @@
 #include "SoundManager.h"
 #include "TitleScene.h"
 #include "StageScene.h"
+#include "BossIntroScene.h"
 bool Sample::Init()
 {
     SoundMgr.LoadAll(L"../_sound/");
-    Title = new TitleScene;
+    TitleStage = new TitleScene;
     SelectStage = new StageScene;
-    Title->SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
-    SceneList.emplace_back(Title);
+    IntroScene = new BossIntroScene;
+    
+    TitleStage->SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
+    SceneList.emplace_back(TitleStage);
     SelectStage->SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
     SceneList.emplace_back(SelectStage);
+    IntroScene->SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
+    SceneList.emplace_back(IntroScene);
+
     SceneIndex = 0;
     return true;
 }

@@ -53,14 +53,14 @@ bool StageScene::Frame()
 
 			MugList[i]->ChangeUi(false, name);
 		}
-		MugList[i]->ScreenToNdc();
-		MugList[i]->UpdateVertexList();
+		MugList[i]->ShowObject();
+		
 	}
 	if (Secret == true) 
 	{
 		MugList[8]->SetRect(MugList[8]->FindSprite(L"Boss09.txt")[2]);
-		MugList[8]->ScreenToNdc();
-		MugList[8]->UpdateVertexList();
+		MugList[8]->ShowObject();
+		
 		if (GameInput.GetKey(VK_RETURN) == KEY_PUSH)
 		{
 			SelectSound->Play();

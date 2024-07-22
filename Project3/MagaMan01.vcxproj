@@ -145,6 +145,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BossImage.cpp" />
+    <ClCompile Include="BossIntroScene.cpp" />
+    <ClCompile Include="FadeInOut.cpp" />
+    <ClCompile Include="IntroBackGround.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="StageScene.cpp" />
@@ -156,6 +160,10 @@
     <ClCompile Include="TitleUI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BossImage.h" />
+    <ClInclude Include="BossIntroScene.h" />
+    <ClInclude Include="FadeInOut.h" />
+    <ClInclude Include="IntroBackGround.h" />
     <ClInclude Include="Sample.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="StageScene.h" />

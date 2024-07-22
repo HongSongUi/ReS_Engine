@@ -2,8 +2,8 @@
 #include "TextureManager.h"
 bool Object2D::Frame()
 {
-	return true;
 
+	return true;
 }
 
 void Object2D::SetVertexList()
@@ -87,4 +87,10 @@ void Object2D::SetRect(Rect rt)
 	UvRect.Min.y = rt.Min.y / TextureSize.y;
 	UvRect.Max.x = rt.Max.x / TextureSize.x;
 	UvRect.Max.y = rt.Max.y / TextureSize.y;
+}
+
+void Object2D::ShowObject()
+{
+    ScreenToNdc();
+    UpdateVertexList();
 }

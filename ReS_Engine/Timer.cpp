@@ -1,4 +1,5 @@
 #include "Timer.h"
+
 float gGameTimer = 0.0f;
 float gSecondPerFrame = 0.0f;
 

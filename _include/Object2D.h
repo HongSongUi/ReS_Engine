@@ -33,5 +33,6 @@ public:
 	void ScreenToView(Vector2 CamPos, Vector2 CamSize);
 	virtual void SetPhysics() override ;
 	void SetRect(Rect rt) ;
+	virtual void ShowObject();
 };
 

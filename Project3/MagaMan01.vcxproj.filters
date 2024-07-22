@@ -16,6 +16,12 @@
     <Filter Include="TitleScene">
       <UniqueIdentifier>{912e2299-49a0-4120-abbc-8990d227181b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StageScene">
+      <UniqueIdentifier>{0b21a201-647f-4d3c-8698-cedd353754c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BossIntro">
+      <UniqueIdentifier>{47d75857-4f7d-4cf6-baf1-bf2209399d6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sample.cpp">
@@ -36,13 +42,25 @@
     <ClCompile Include="TitleUI.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="StageSelect.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="StageUI.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>StageScene</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSelect.cpp">
+      <Filter>StageScene</Filter>
     </ClCompile>
     <ClCompile Include="StageScene.cpp">
+      <Filter>StageScene</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroBackGround.cpp">
+      <Filter>BossIntro</Filter>
+    </ClCompile>
+    <ClCompile Include="BossIntroScene.cpp">
+      <Filter>BossIntro</Filter>
+    </ClCompile>
+    <ClCompile Include="BossImage.cpp">
+      <Filter>BossIntro</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeInOut.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,13 +83,25 @@
     <ClInclude Include="TitleUI.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
+    <ClInclude Include="StageScene.h">
+      <Filter>StageScene</Filter>
+    </ClInclude>
     <ClInclude Include="StageSelect.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>StageScene</Filter>
     </ClInclude>
     <ClInclude Include="StageUI.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>StageScene</Filter>
     </ClInclude>
-    <ClInclude Include="StageScene.h">
+    <ClInclude Include="IntroBackGround.h">
+      <Filter>BossIntro</Filter>
+    </ClInclude>
+    <ClInclude Include="BossIntroScene.h">
+      <Filter>BossIntro</Filter>
+    </ClInclude>
+    <ClInclude Include="BossImage.h">
+      <Filter>BossIntro</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeInOut.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
