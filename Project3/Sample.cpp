@@ -5,7 +5,9 @@
 #include "BossIntroScene.h"
 bool Sample::Init()
 {
+    Is2DGame = true;
     SoundMgr.LoadAll(L"../_sound/");
+  
     TitleStage = new TitleScene;
     SelectStage = new StageScene;
     IntroScene = new BossIntroScene;

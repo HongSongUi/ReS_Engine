@@ -53,6 +53,7 @@ bool GameCore::PostProcess()
 bool GameCore::CoreInit()
 {
 	UseDebugCam = false;
+	Is2DGame = false;
 	GameDevice.SetWindowData(Window.ClientRect, Window.Hwnd);
 
 	ClientRect = Window.ClientRect;
@@ -133,20 +134,27 @@ bool GameCore::CoreRender()
 	CorePreRender();
 	PreRender();
 	//////////////////////////////////////////////
-	RenderTexture.OldDepthStencil = GameDevice.DepthStencilView;
-	RenderTexture.OldRenderTarget = GameDevice.RenderTargetView;
-	RenderTexture.OldViewPort[0] = GameDevice.ViewPort;
-	if (RenderTexture.Begin(GameDevice.D3D11Context))
+	if (Is2DGame == false)
+	{
+		RenderTexture.OldDepthStencil = GameDevice.DepthStencilView;
+		RenderTexture.OldRenderTarget = GameDevice.RenderTargetView;
+		RenderTexture.OldViewPort[0] = GameDevice.ViewPort;
+		if (RenderTexture.Begin(GameDevice.D3D11Context))
+		{
+			
+			RenderTexture.End(GameDevice.D3D11Context);
+		}
+		if (RenderTexture.ShaderResourceView)
+		{
+			RenderTarget.Mesh.TextureSRV = RenderTexture.ShaderResourceView;
+		}
+		//RenderTarget.SetMatrix(nullptr, nullptr, nullptr);
+		RenderTarget.Render();
+	}
+	else
 	{
 		Render();
-		RenderTexture.End(GameDevice.D3D11Context);
 	}
-	if (RenderTexture.ShaderResourceView) 
-	{
-		RenderTarget.Mesh.TextureSRV = RenderTexture.ShaderResourceView;
-	}
-	//RenderTarget.SetMatrix(nullptr, nullptr, nullptr);
-	RenderTarget.Render();
 
 	///// ////////////////////////////////////////////
 	GameTimer.Render();

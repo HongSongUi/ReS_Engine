@@ -28,6 +28,7 @@ public:
 	DebugCamera		DebugCam;
 	bool			IsGameRun;
 	bool			UseDebugCam;
+	bool			Is2DGame;
 public:
 	virtual bool Init();
 	virtual bool Render();
