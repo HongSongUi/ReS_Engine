@@ -17,7 +17,6 @@ class BossIntroScene : public Scene
 	bool Wait = false;
 	bool Flash = false;
 	float CharShotTime = 2.5f;
-	bool NarSound = true;
 	bool FlashEnd = false;
 	//float ImageTimer = 1.0f;
 	float FlashTimer = 2.5f;

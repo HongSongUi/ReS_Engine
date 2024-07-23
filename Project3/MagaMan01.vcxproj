@@ -147,8 +147,11 @@
   <ItemGroup>
     <ClCompile Include="BossImage.cpp" />
     <ClCompile Include="BossIntroScene.cpp" />
+    <ClCompile Include="Effect.cpp" />
     <ClCompile Include="FadeInOut.cpp" />
+    <ClCompile Include="InGameBackGround.cpp" />
     <ClCompile Include="IntroBackGround.cpp" />
+    <ClCompile Include="IntroText.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="StageScene.cpp" />
@@ -158,12 +161,16 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TitleUI.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BossImage.h" />
     <ClInclude Include="BossIntroScene.h" />
+    <ClInclude Include="Effect.h" />
     <ClInclude Include="FadeInOut.h" />
+    <ClInclude Include="InGameBackGround.h" />
     <ClInclude Include="IntroBackGround.h" />
+    <ClInclude Include="IntroText.h" />
     <ClInclude Include="Sample.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="StageScene.h" />
@@ -173,6 +180,7 @@
     <ClInclude Include="Title.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TitleUI.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReS_Engine\ReS_Engine.vcxproj">

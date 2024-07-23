@@ -22,6 +22,9 @@
     <Filter Include="BossIntro">
       <UniqueIdentifier>{47d75857-4f7d-4cf6-baf1-bf2209399d6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="InGame">
+      <UniqueIdentifier>{713ea883-0e07-4bcd-96e0-ebe6e721fbf9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sample.cpp">
@@ -63,6 +66,18 @@
     <ClCompile Include="FadeInOut.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="InGameBackGround.cpp">
+      <Filter>InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroText.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sample.h">
@@ -102,6 +117,18 @@
       <Filter>BossIntro</Filter>
     </ClInclude>
     <ClInclude Include="FadeInOut.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameBackGround.h">
+      <Filter>InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroText.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

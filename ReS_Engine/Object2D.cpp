@@ -45,6 +45,11 @@ void Object2D::UpdateVertexList()
     Mesh.UpdateVertexBuffer();
 }
 
+void Object2D::Hit(Object2D& HitObject , float Damage)
+{
+    //TODO 수정하기
+}
+
 
 void Object2D::SetPosition(Vector2 pos)
 {
@@ -93,4 +98,11 @@ void Object2D::ShowObject()
 {
     ScreenToNdc();
     UpdateVertexList();
+}
+
+void Object2D::MaskRender()
+{
+    PreRender();
+    D3D11Context->PSSetShaderResources(1, 1, &MaskTexture->TextureSRV);
+    PostRender();
 }

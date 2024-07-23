@@ -28,11 +28,14 @@ public:
 	virtual bool Frame()override;
 	virtual void SetVertexList()override ;
 	virtual void UpdateVertexList() override;
+	virtual void Hit(Object2D& HitObject, float Damage);
 	void SetPosition(Vector2 pos) override;
 	void ScreenToNdc();
 	void ScreenToView(Vector2 CamPos, Vector2 CamSize);
 	virtual void SetPhysics() override ;
 	void SetRect(Rect rt) ;
 	virtual void ShowObject();
+	virtual void MaskRender();
+
 };
 

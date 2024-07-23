@@ -4,6 +4,8 @@
 extern float gGameTimer;
 extern float gSecondPerFrame;
 
+#define randstep(fMin,fMax) (fMin+((float)fMax-(float)fMin)*rand()/(float)RAND_MAX)
+
 template<typename T> class Singleton
 {
 public:

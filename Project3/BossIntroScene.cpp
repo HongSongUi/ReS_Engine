@@ -32,12 +32,10 @@ bool BossIntroScene::Render()
 	BackGround->Render();
 	BossImageList[0]->Render();
 	BossImageList[1]->Render();
-		BossImageList[2]->PreRender();
-		D3D11Context->PSSetShaderResources(1, 1, &BossImageList[2]->MaskTexture->TextureSRV);
-		BossImageList[2]->PostRender();
-		BossImageList[3]->PreRender();
-		D3D11Context->PSSetShaderResources(1, 1, &BossImageList[3]->MaskTexture->TextureSRV);
-		BossImageList[3]->PostRender();
+
+	BossImageList[2]->MaskRender();
+
+	BossImageList[3]->MaskRender();
 
 	if (Flash == true)
 	{
@@ -60,77 +58,15 @@ bool BossIntroScene::Release()
 
 bool BossIntroScene::Frame()
 {
-	BGM->Play();
-	if (BossImageList[0]->WorldPos.x >= 850) {
-		BossImageList[0]->ImageMove();
-	}
-	if (BossImageList[0]->WorldPos.x <= 850) {
-		Flash = true;
-		//ImageWait = true;
-	}
-	if (Flash == true) {
-		FlashTimer -= gSecondPerFrame;
-		if (Wait == false) {
-			FadeObject->FadeSet(0);
-			WaitTime -= gSecondPerFrame;
-			if (WaitTime < 0.0f) {
-				Wait = true;
-				WaitTime = 0.2f;
-			}
-		}
-		else {
-			FadeObject->FadeSet(1);
-			WaitTime -= gSecondPerFrame;
-			BossImageList[1]->SetPosition({ 200,350 });
-			if (WaitTime < 0.0f) {
-				Wait = false;
-				WaitTime = 0.2f;
-			}
-		}
-		if (FlashTimer < 0.0f) {
-			Flash = false;
-			FlashEnd = true;
-		}
-	}
-	BossImageList[0]->ScreenToNdc();
-	BossImageList[0]->UpdateVertexList();
-	BossImageList[1]->ScreenToNdc();
-	BossImageList[1]->UpdateVertexList();
-	if (FlashEnd == true) {
-		CharShotTime -= gSecondPerFrame;
-		if (CharShotTime < 0.0f) {
-			if (NarSound == true) {
-				Nar->Play();
-			}
-			NarSound = false;
-			SceneChange = true;
-			BossImageList[2]->SetPosition({500, 350});
-			BossImageList[3]->SetPosition({ 500 ,500 });
-		}
-	}
 
-	BossImageList[2]->ScreenToNdc();
-	BossImageList[2]->UpdateVertexList();
+	PlayBGM();
+	MoveBossImage();
+	FlashScreen();
+	UpdateBossImage();
+	FlashScreenEnd();
+	HandleSceneChange();
 
-	BossImageList[3]->ScreenToNdc();
-	BossImageList[3]->UpdateVertexList();
-	if (SceneChange == true) {
-		SceneWaitTimer -= gSecondPerFrame;
-		if (SceneWaitTimer < 0.0f) {
-			ChangeScene = true;
-		}
-	}
 
-	//PlayBGM();
-	//MoveBossImage();
-	//FlashScreen();
-	//UpdateBossImage();
-	//HandleSceneChange();
-	//BossImageList[0]->ShowObject();
-	//BossImageList[1]->ShowObject();
-
-	//BossImageList[2]->ShowObject();
-	//BossImageList[3]->ShowObject();
 
 	return true;
 }
@@ -226,7 +162,7 @@ void BossIntroScene::FlashScreenEnd()
 	CharShotTime -= gSecondPerFrame;
 	if (CharShotTime < 0.0f)
 	{
-		if (Nar->IsPlay() == false)
+		if (SceneChange == false)
 		{
 			Nar->Play();
 		}

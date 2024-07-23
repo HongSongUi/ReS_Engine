@@ -1,0 +1,53 @@
+#pragma once
+#include <map>
+#include "Object2D.h"
+
+class TextLoader;
+
+struct EffectRange 
+{
+	float left;
+	float top;
+	float right;
+	float bottom;
+};
+enum EffectTag 
+{
+	CHRGING,
+	BOOSTER,
+	WALLDUST,
+	DASHDUST,
+	BULLETHIT,
+	EXPLOSION,
+};
+
+
+class Effect : public Object2D
+{
+	EffectRange Range;
+	std::vector<Rect> EffectList;
+	TextLoader* Text;
+	std::map<std::wstring, std::vector<Rect>> FileList;
+
+	float EffectTimer = 0.0f;
+	std::wstring TextureName;
+	std::wstring MaskTexName;
+	float WaitTime = randstep(0, 2);
+public:
+	int Index = 0;
+	std::vector<Rect> Sprite;
+	bool Inverse = false;
+	int Tag = 0;
+	bool LoopStop = 0;
+public:
+	bool Init();
+	bool Frame();
+	bool Release();
+public:
+	std::vector<Rect> FindSprite(std::wstring name);
+	void TextInit();
+	void Play();
+	void SetSprite(std::vector<Rect>& Texture);
+	void SetTexture(std::wstring TextureName, std::wstring MaskName);
+};
+
