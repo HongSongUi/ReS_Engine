@@ -1,5 +1,12 @@
 #pragma once
 #include "BaseObject.h"
+struct SpriteRect
+{
+	float Left;
+	float Top;
+	float Right;
+	float Bottom;
+};
 class Object2D : public BaseObject
 {
 private:

@@ -1,16 +1,11 @@
 #pragma once
 #include <map>
 #include "Object2D.h"
-struct MugShot {
-	float left;
-	float top;
-	float right;
-	float bottom;
-};
+
 class StageUI : public Object2D
 {
 	class TextLoader* Loader;
-	struct MugShot Mug;
+	SpriteRect Mug;
 	std::vector<Rect> BossImgList;
 	std::map<std::wstring, std::vector<Rect>> FileList;
 	int Index = 0;

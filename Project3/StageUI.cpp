@@ -39,8 +39,8 @@ void StageUI::TextInit()
 		file >> num;
 		BossImgList.reserve(num);
 		while (file.eof() == false) {
-			file >> Mug.left >> Mug.top >> Mug.right >> Mug.bottom;
-			BossImgList.push_back({ Mug.left,Mug.top, Mug.right,Mug.bottom });
+			file >> Mug.Left >> Mug.Top >> Mug.Right >> Mug.Bottom;
+			BossImgList.push_back({ Mug.Left,Mug.Top, Mug.Right,Mug.Bottom });
 		}
 		FileList.insert(std::make_pair(name, BossImgList));
 		BossImgList.clear();

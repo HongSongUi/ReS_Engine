@@ -149,6 +149,7 @@
     <ClCompile Include="BossIntroScene.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="FadeInOut.cpp" />
+    <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="InGameBackGround.cpp" />
     <ClCompile Include="IntroBackGround.cpp" />
     <ClCompile Include="IntroText.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="BossIntroScene.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="FadeInOut.h" />
+    <ClInclude Include="HealthBar.h" />
     <ClInclude Include="InGameBackGround.h" />
     <ClInclude Include="IntroBackGround.h" />
     <ClInclude Include="IntroText.h" />

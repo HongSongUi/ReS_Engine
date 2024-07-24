@@ -4,13 +4,7 @@
 
 class TextLoader;
 
-struct EffectRange 
-{
-	float left;
-	float top;
-	float right;
-	float bottom;
-};
+
 enum EffectTag 
 {
 	CHRGING,
@@ -24,7 +18,7 @@ enum EffectTag
 
 class Effect : public Object2D
 {
-	EffectRange Range;
+	SpriteRect Range;
 	std::vector<Rect> EffectList;
 	TextLoader* Text;
 	std::map<std::wstring, std::vector<Rect>> FileList;

@@ -2,13 +2,6 @@
 #include <map>
 #include "Object2D.h"
 
-struct SpriteRect {
-	float Left;
-	float Top;
-	float Right;
-	float Bottom;
-};
-
 class HealthBar : public Object2D
 {
 	class TextLoader* Text;

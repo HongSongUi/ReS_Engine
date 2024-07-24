@@ -47,8 +47,8 @@ void Effect::TextInit()
 		EffectList.reserve(num);
 		while (file.eof() == false)
 		{
-			file >> Range.left >> Range.top >> Range.right >> Range.bottom;
-			EffectList.push_back({ Range.left,Range.top, Range.right,Range.bottom });
+			file >> Range.Left >> Range.Top >> Range.Right >> Range.Bottom;
+			EffectList.push_back({ Range.Left,Range.Top, Range.Right,Range.Bottom });
 		}
 		FileList.insert(std::make_pair(name, EffectList));
 		EffectList.clear();
@@ -70,18 +70,23 @@ void Effect::Play()
 	if (EffectTimer >= frame)
 	{
 		Index++;
-		if (Index >= Sprite.size()) {
-			if (Tag == CHRGING) {
+		if (Index >= Sprite.size()) 
+		{
+			if (Tag == CHRGING) 
+			{
 				Index = (Sprite.size() / 2) + 3;
 			}
-			if (Tag == DASHDUST) {
+			if (Tag == DASHDUST)
+			{
 				Index = 0;
 				return;
 			}
-			else if (Tag == BOOSTER) {
+			else if (Tag == BOOSTER) 
+			{
 				Index = 0;
 			}
-			else if (Tag == WALLDUST) {
+			else if (Tag == WALLDUST)
+			{
 				Index = 0;
 			}
 
