@@ -13,29 +13,36 @@ void IdleState::Update()
     }
     else {
         if (GameInput.GetKey('X') == KEY_FREE) {
-            if (Owner->GetChargeState() == CHARGEND) {
-                //SetSprite(FindSprite(L"ChargeShoot.txt"));
+            if (Owner->GetChargeState() == CHARGEND) 
+            {
+                Owner->SetAnimation(Owner->FindSprite(L"ChargeShoot.txt"));
             }
-            if (_Index >= _Play.size() - 1) {
-               // SetSprite(_CurrIdle);
+            if (Owner->CheckAnimationIndex(1)) 
+            {
+                Owner->SetCurrentState();
             }
         }
-        if (GameInput.GetKey('C') == KEY_PUSH) {
-           // ChangeState(new JumpState());
+        if (GameInput.GetKey('C') == KEY_PUSH)
+        {
+            Owner->ChangeState(new JumpState());
         }
-        if (GameInput.GetKey(VK_DOWN) == KEY_HOLD) {
-          //  ChangeState(new CrouchState());
+        if (GameInput.GetKey(VK_DOWN) == KEY_HOLD) 
+        {
+            Owner->ChangeState(new CrouchState());
         }
-        if (GameInput.GetKey(VK_LEFT) == KEY_HOLD) {
-           // _Inverse = true;
-           // ChangeState(new WalkState());
+        if (GameInput.GetKey(VK_LEFT) == KEY_HOLD) 
+        {
+            Owner->SetInverse(true);
+            Owner->ChangeState(new WalkState());
         }
-        if (GameInput.GetKey(VK_RIGHT) == KEY_HOLD) {
-           // _Inverse = false;
-           // ChangeState(new WalkState());
+        if (GameInput.GetKey(VK_RIGHT) == KEY_HOLD)
+        {
+            Owner->SetInverse(false);
+            Owner->ChangeState(new WalkState());
         }
-        if (GameInput.GetKey('X') == KEY_PUSH) {
-           // ChangeState(new ShootState());
+        if (GameInput.GetKey('X') == KEY_PUSH) 
+        {
+            Owner->ChangeState(new ShootState());
         }
     }
 }

@@ -2,5 +2,9 @@
 #include "Player.h"
 void State::Enter()
 {
-	Owner = new Player;
+}
+
+void State::SetOwner(Player* player)
+{
+	Owner = player;
 }

@@ -150,18 +150,22 @@
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="FadeInOut.cpp" />
     <ClCompile Include="HealthBar.cpp" />
+    <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="InGameBackGround.cpp" />
     <ClCompile Include="IntroBackGround.cpp" />
     <ClCompile Include="IntroText.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="StageScene.cpp" />
     <ClCompile Include="StageSelect.cpp" />
     <ClCompile Include="StageUI.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="TextLoader.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TitleUI.cpp" />
+    <ClCompile Include="WalkState.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,18 +174,22 @@
     <ClInclude Include="Effect.h" />
     <ClInclude Include="FadeInOut.h" />
     <ClInclude Include="HealthBar.h" />
+    <ClInclude Include="IdleState.h" />
     <ClInclude Include="InGameBackGround.h" />
     <ClInclude Include="IntroBackGround.h" />
     <ClInclude Include="IntroText.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Sample.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="StageScene.h" />
     <ClInclude Include="StageSelect.h" />
     <ClInclude Include="StageUI.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="TextLoader.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TitleUI.h" />
+    <ClInclude Include="WalkState.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>

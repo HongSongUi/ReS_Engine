@@ -8,5 +8,6 @@ public:
 	virtual void Enter();
 	virtual void Update() = 0;
 	virtual void Exit() = 0;
+	virtual void SetOwner(class Player* player);
 };
 

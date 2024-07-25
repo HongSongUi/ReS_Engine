@@ -25,6 +25,9 @@
     <Filter Include="InGame">
       <UniqueIdentifier>{713ea883-0e07-4bcd-96e0-ebe6e721fbf9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FSM">
+      <UniqueIdentifier>{0e440847-8b41-4c99-afb7-6160ca0bf5e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sample.cpp">
@@ -81,6 +84,18 @@
     <ClCompile Include="HealthBar.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="WalkState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sample.h">
@@ -135,6 +150,18 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="HealthBar.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="WalkState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
