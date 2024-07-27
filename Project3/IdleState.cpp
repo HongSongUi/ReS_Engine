@@ -1,9 +1,11 @@
 #include "IdleState.h"
 #include "Input.h"
 #include "Player.h"
+#include "JumpState.h"
 void IdleState::Enter()
 {
     State::Enter();
+    Owner->SetAnimation(Owner->FindSprite(L"Idle.text"));
 }
 
 void IdleState::Update()
@@ -24,25 +26,25 @@ void IdleState::Update()
         }
         if (GameInput.GetKey('C') == KEY_PUSH)
         {
-            Owner->ChangeState(new JumpState());
+           Owner->ChangeState(new JumpState());
         }
         if (GameInput.GetKey(VK_DOWN) == KEY_HOLD) 
         {
-            Owner->ChangeState(new CrouchState());
+            //Owner->ChangeState(new CrouchState());
         }
         if (GameInput.GetKey(VK_LEFT) == KEY_HOLD) 
         {
             Owner->SetInverse(true);
-            Owner->ChangeState(new WalkState());
+            //Owner->ChangeState(new WalkState());
         }
         if (GameInput.GetKey(VK_RIGHT) == KEY_HOLD)
         {
             Owner->SetInverse(false);
-            Owner->ChangeState(new WalkState());
+            //Owner->ChangeState(new WalkState());
         }
         if (GameInput.GetKey('X') == KEY_PUSH) 
         {
-            Owner->ChangeState(new ShootState());
+           // Owner->ChangeState(new ShootState());
         }
     }
 }

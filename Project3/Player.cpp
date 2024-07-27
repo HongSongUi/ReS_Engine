@@ -67,6 +67,28 @@ std::vector<Rect> Player::FindSprite(std::wstring name)
 	return std::vector<Rect>();
 }
 
+bool Player::Init()
+{
+	Inverse = false;
+	Loader = new TextLoader;
+	Loader->LoadDir(L"../_Animation/RockMan/");
+	SetMask(L"../_Texture/RockManmask.bmp");
+	SetPhysics();
+	Load(L"../_shader/DefaultMaskShader.txt", L"../_Texture/RockMan.bmp");
+	InitAnimation();
+	SetRect(FindSprite(L"Idle.txt")[0]);
+	CurrentAnimation = &FindSprite(L"Idle.txt");
+	SetPosition({ 150,0 });
+	ChangeState(new IdleState);
+	CreateVertex();
+	return true;
+}
+
+bool Player::Frame()
+{
+	return true;
+}
+
 void Player::SetCurrentState()
 {
 	if (CurHealth <= MaxHealth / 2.0f) {

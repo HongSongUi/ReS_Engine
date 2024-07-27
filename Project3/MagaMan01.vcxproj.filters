@@ -93,8 +93,14 @@
     <ClCompile Include="WalkState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="IdleState.cpp">
+    <ClCompile Include="InGame.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpState.cpp">
+      <Filter>FSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,8 +167,14 @@
     <ClInclude Include="WalkState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="IdleState.h">
+    <ClInclude Include="InGame.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpState.h">
+      <Filter>FSM</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 #include "TitleScene.h"
 #include "StageScene.h"
 #include "BossIntroScene.h"
+#include "InGame.h"
 bool Sample::Init()
 {
     Is2DGame = true;
@@ -11,14 +12,16 @@ bool Sample::Init()
     TitleStage = new TitleScene;
     SelectStage = new StageScene;
     IntroScene = new BossIntroScene;
-    
+    InGameScene = new InGame;
+
     TitleStage->SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
     SceneList.emplace_back(TitleStage);
     SelectStage->SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
     SceneList.emplace_back(SelectStage);
     IntroScene->SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
     SceneList.emplace_back(IntroScene);
-
+    InGameScene->SetData(GameCore::GetDevice(), GameCore::GetContext(), GameCore::GetClientRect());
+    SceneList.emplace_back(InGameScene);
     SceneIndex = 0;
     return true;
 }

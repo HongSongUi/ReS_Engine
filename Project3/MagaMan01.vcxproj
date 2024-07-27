@@ -151,9 +151,11 @@
     <ClCompile Include="FadeInOut.cpp" />
     <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="IdleState.cpp" />
+    <ClCompile Include="InGame.cpp" />
     <ClCompile Include="InGameBackGround.cpp" />
     <ClCompile Include="IntroBackGround.cpp" />
     <ClCompile Include="IntroText.cpp" />
+    <ClCompile Include="JumpState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -175,9 +177,11 @@
     <ClInclude Include="FadeInOut.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="IdleState.h" />
+    <ClInclude Include="InGame.h" />
     <ClInclude Include="InGameBackGround.h" />
     <ClInclude Include="IntroBackGround.h" />
     <ClInclude Include="IntroText.h" />
+    <ClInclude Include="JumpState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sample.h" />
     <ClInclude Include="Scene.h" />

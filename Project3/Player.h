@@ -32,6 +32,8 @@ class Player : public Object2D
 	float CurHealth = MaxHealth;
 
 public:
+	bool Init() override;
+	bool Frame() override;
 	void Falling();
 	bool GetIsGround();
 	void SetChargeState(ChargeState state);
