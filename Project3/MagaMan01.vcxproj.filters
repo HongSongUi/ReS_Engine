@@ -90,9 +90,6 @@
     <ClCompile Include="State.cpp">
       <Filter>FSM</Filter>
     </ClCompile>
-    <ClCompile Include="WalkState.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="InGame.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -101,6 +98,27 @@
     </ClCompile>
     <ClCompile Include="JumpState.cpp">
       <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="WalkState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="CrouchState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="ShootState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="DashState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="WallClingState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="AirDashState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -164,9 +182,6 @@
     <ClInclude Include="State.h">
       <Filter>FSM</Filter>
     </ClInclude>
-    <ClInclude Include="WalkState.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="InGame.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -175,6 +190,27 @@
     </ClInclude>
     <ClInclude Include="JumpState.h">
       <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="WalkState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="CrouchState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="ShootState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="DashState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="WallClingState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="AirDashState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

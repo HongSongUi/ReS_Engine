@@ -17,7 +17,7 @@ void Object2D::SetVertexList()
         VertexList[1].Texture = { UvRect.Max.x , UvRect.Min.y };
 
         VertexList[2].Position = { NdcPos.x - NdcSize.x,NdcPos.y - NdcSize.y ,0.0f };
-        VertexList[2].Texture = { UvRect.Min.x,UvRect.Max.y };
+        VertexList[2].Texture = { UvRect.Min.x, UvRect.Max.y };
 
         VertexList[3].Position = { NdcPos.x + NdcSize.x , NdcPos.y - NdcSize.y,0.0f };
         VertexList[3].Texture = { UvRect.Max.x , UvRect.Max.y };
@@ -105,4 +105,10 @@ void Object2D::MaskRender()
     PreRender();
     D3D11Context->PSSetShaderResources(1, 1, &MaskTexture->TextureSRV);
     PostRender();
+}
+
+void Object2D::CameraSet(Vector2 CamPos, Vector2 CamSize)
+{
+    ScreenToView(CamPos, CamSize);
+    UpdateVertexList();
 }

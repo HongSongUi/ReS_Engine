@@ -43,6 +43,7 @@ public:
 	void SetRect(Rect rt) ;
 	virtual void ShowObject();
 	virtual void MaskRender();
+	void CameraSet(Vector2 CamPos, Vector2 CamSize);
 
 };
 

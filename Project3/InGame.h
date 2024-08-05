@@ -17,5 +17,8 @@ public:
 
 public:
 	virtual void SetData(ID3D11Device* Device, ID3D11DeviceContext* Context, RECT ClientRt)override;
+	void UpdateCamera();
+	void CheckPlayerCollision();
+	void CameraPositionAdjust();
 };
 

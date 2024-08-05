@@ -1,7 +1,8 @@
 #pragma once
 #include "State.h"
-class JumpState : public State
+class DashState : public State
 {
+	float DashTime;
 	float WaitTime;
 public:
 	virtual void Enter() override;

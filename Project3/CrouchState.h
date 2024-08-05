@@ -1,6 +1,6 @@
 #pragma once
 #include "State.h"
-class JumpState : public State
+class CrouchState : public State
 {
 	float WaitTime;
 public:

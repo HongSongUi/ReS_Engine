@@ -68,7 +68,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
    // LoadStringW(hInstance, IDC_WINAPI01, szWindowClass, MAX_LOADSTRING);
 
     Sample  MyWin;
-    MyWin.SetWindow(hInstance, L"Megaman", 1024, 768);
+    MyWin.SetWindow(hInstance, L"Megaman", 1000, 700);
     MyWin.Run();
 
     return 1;

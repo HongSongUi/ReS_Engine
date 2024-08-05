@@ -8,3 +8,8 @@ void State::SetOwner(Player* player)
 {
 	Owner = player;
 }
+
+StateTag State::GetTag()
+{
+	return Tag;
+}
