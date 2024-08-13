@@ -19,14 +19,14 @@
     <Filter Include="StageScene">
       <UniqueIdentifier>{0b21a201-647f-4d3c-8698-cedd353754c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BossIntro">
-      <UniqueIdentifier>{47d75857-4f7d-4cf6-baf1-bf2209399d6e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="InGame">
       <UniqueIdentifier>{713ea883-0e07-4bcd-96e0-ebe6e721fbf9}</UniqueIdentifier>
     </Filter>
     <Filter Include="FSM">
       <UniqueIdentifier>{0e440847-8b41-4c99-afb7-6160ca0bf5e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BossIntro">
+      <UniqueIdentifier>{47d75857-4f7d-4cf6-baf1-bf2209399d6e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,20 +78,8 @@
     <ClCompile Include="Effect.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="IntroText.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="HealthBar.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="State.cpp">
       <Filter>FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="InGame.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="IdleState.cpp">
       <Filter>FSM</Filter>
@@ -117,8 +105,44 @@
     <ClCompile Include="AirDashState.cpp">
       <Filter>FSM</Filter>
     </ClCompile>
+    <ClCompile Include="HitState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroIdle.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroWalkState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="WinState.cpp">
+      <Filter>FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="BossBullet.cpp">
+      <Filter>InGame</Filter>
+    </ClCompile>
     <ClCompile Include="Bullet.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="InGame.cpp">
+      <Filter>InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroText.cpp">
+      <Filter>InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Laser.cpp">
+      <Filter>InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthBar.cpp">
+      <Filter>InGame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,20 +194,8 @@
     <ClInclude Include="Effect.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="IntroText.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="HealthBar.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="State.h">
       <Filter>FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="InGame.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="IdleState.h">
       <Filter>FSM</Filter>
@@ -209,8 +221,44 @@
     <ClInclude Include="AirDashState.h">
       <Filter>FSM</Filter>
     </ClInclude>
+    <ClInclude Include="HitState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroIdle.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroWalkState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="WinState.h">
+      <Filter>FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="BossBullet.h">
+      <Filter>InGame</Filter>
+    </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthBar.h">
+      <Filter>InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="InGame.h">
+      <Filter>InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Laser.h">
+      <Filter>InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroText.h">
+      <Filter>InGame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@ enum StateTag
 	WALLCLING,
 	DASH,
 	AIRDASH,
+	HIT,
 };
 class State
 {
@@ -18,8 +19,8 @@ protected:
 public:
 	virtual ~State() {}
 	virtual void Enter();
-	virtual void Update() = 0;
-	virtual void Exit() = 0;
+	virtual void Update();
+	virtual void Exit();
 	virtual void SetOwner(class Player* player);
 	virtual StateTag GetTag();
 };

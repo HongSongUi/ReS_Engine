@@ -30,9 +30,10 @@ class Effect : public Object2D
 public:
 	int Index = 0;
 	std::vector<Rect> Sprite;
-	bool Inverse = false;
 	int Tag = 0;
 	bool LoopStop = 0;
+	bool Loop = false;
+	bool EndLoop = false;
 public:
 	bool Init();
 	bool Frame();
@@ -43,5 +44,11 @@ public:
 	void Play();
 	void SetSprite(std::vector<Rect>& Texture);
 	void SetTexture(std::wstring TextureName, std::wstring MaskName);
+	void ResetEffect();
+	void SetInverse(bool inverse);
+	bool CheckAnimationEnd();
+	void SetLoop(bool isLoop);
+	void SetEndLoop(bool isEndLoop);
+	void ResetAnimation();
 };
 

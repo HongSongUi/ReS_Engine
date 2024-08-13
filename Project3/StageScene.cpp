@@ -5,9 +5,13 @@
 #include "Input.h"
 bool StageScene::Init()
 {
+	BGM = new GameSound;
+	ChooseSound = new GameSound;
+	SelectSound = new GameSound;
+
     BGM = SoundMgr.Find(L"BGM_004.mp3");
     ChooseSound = SoundMgr.Find(L"ROCK_X5_00546.wav");
-    SelectSound = SoundMgr.Find(L"ROCK_X5_00169.wav");
+    SelectSound = SoundMgr.Find(L"ROCK_X5_00661.wav");
     Select->Init();
 
     return true;

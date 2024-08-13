@@ -36,12 +36,14 @@ void GameSound::Pause()
 
 void GameSound::VolumeAdj(bool adjust)
 {
-    if (adjust) {
+    if (adjust) 
+    {
         Volume += 0.1f;
         Volume = std::min(1.0f, Volume);
         FChannel->setVolume(Volume);
     }
-    else {
+    else 
+    {
         Volume -= 0.1f;
         Volume = std::max(0.0f, Volume);
         FChannel->setVolume(Volume);

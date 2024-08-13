@@ -146,20 +146,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AirDashState.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossBullet.cpp" />
     <ClCompile Include="BossImage.cpp" />
     <ClCompile Include="BossIntroScene.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CrouchState.cpp" />
     <ClCompile Include="DashState.cpp" />
+    <ClCompile Include="DeathState.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="FadeInOut.cpp" />
     <ClCompile Include="HealthBar.cpp" />
+    <ClCompile Include="HitState.cpp" />
     <ClCompile Include="IdleState.cpp" />
+    <ClCompile Include="IntroWalkState.cpp" />
     <ClCompile Include="InGame.cpp" />
     <ClCompile Include="InGameBackGround.cpp" />
     <ClCompile Include="IntroBackGround.cpp" />
+    <ClCompile Include="IntroIdle.cpp" />
     <ClCompile Include="IntroText.cpp" />
     <ClCompile Include="JumpState.cpp" />
+    <ClCompile Include="Laser.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -175,23 +182,31 @@
     <ClCompile Include="WalkState.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WallClingState.cpp" />
+    <ClCompile Include="WinState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AirDashState.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossBullet.h" />
     <ClInclude Include="BossImage.h" />
     <ClInclude Include="BossIntroScene.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="CrouchState.h" />
     <ClInclude Include="DashState.h" />
+    <ClInclude Include="DeathState.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="FadeInOut.h" />
     <ClInclude Include="HealthBar.h" />
+    <ClInclude Include="HitState.h" />
     <ClInclude Include="IdleState.h" />
+    <ClInclude Include="IntroWalkState.h" />
     <ClInclude Include="InGame.h" />
     <ClInclude Include="InGameBackGround.h" />
     <ClInclude Include="IntroBackGround.h" />
+    <ClInclude Include="IntroIdle.h" />
     <ClInclude Include="IntroText.h" />
     <ClInclude Include="JumpState.h" />
+    <ClInclude Include="Laser.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sample.h" />
     <ClInclude Include="Scene.h" />
@@ -207,6 +222,7 @@
     <ClInclude Include="WalkState.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WallClingState.h" />
+    <ClInclude Include="WinState.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReS_Engine\ReS_Engine.vcxproj">

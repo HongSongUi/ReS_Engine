@@ -12,6 +12,7 @@ bool Bullet::Init()
     LifeTime = 0.75f;
     Loader = new TextLoader;
     Loader->LoadDir(L"../_Animation/Bullet/");
+    AnimationInit();
     SetMask(L"../_Texture/Bustermask.bmp");
     Load(L"../_shader/DefaultMaskShader.txt", L"../_Texture/Buster.bmp");
     SetRect(GetAnimation(L"Normal.txt")[0]);
@@ -24,7 +25,7 @@ bool Bullet::Frame()
     LifeTime -= gSecondPerFrame;
     if (LifeTime < 0.f)
     {
-        Release();
+        //Release();
     }
     Position = WorldPos;
     if (AnimIndex - 1 >= (CurrentAnimation.size() / 2.0f)) 
@@ -33,20 +34,22 @@ bool Bullet::Frame()
     }
     Play();
     SetPosition(Position);
+    
     return true;
 }
 
-bool Bullet::Render()
-{
 
-    return true;
-}
 
 bool Bullet::Release()
 {
     Object2D::Release();
     delete Loader;
     return true;
+}
+
+Rect Bullet::GetObjectRect()
+{
+    return ObjectRect;
 }
 
 std::vector<Rect> Bullet::GetAnimation(std::wstring name)
@@ -144,5 +147,52 @@ void Bullet::SetType(BulletType type)
         Damage = FullDamage;
         SetAnimaiton(GetAnimation(L"FullCharge.txt"));
     }
+}
+
+void Bullet::SetSpawnPosition(Vector2 pos)
+{
+    SetPosition(pos);
+}
+
+void Bullet::SetInverse(bool inverse)
+{
+    Inverse = inverse;
+}
+
+bool Bullet::CheckBulletState()
+{
+    if (AnimIndex < (CurrentAnimation.size() / 2.0f) - 1)
+    {
+        return true;
+    }
+    return false;
+}
+
+bool Bullet::CheckBulletTime()
+{
+    if (LifeTime < 0.f)
+    {
+        return true;
+    }
+    return false;
+}
+
+bool Bullet::ReadyToFire()
+{
+    if (AnimIndex < (CurrentAnimation.size() / 2.0f) - 1) 
+    {
+        return true;
+    }
+    return false;
+}
+
+BulletType Bullet::GetType()
+{
+    return Type;
+}
+
+float Bullet::GetBulletDamage()
+{
+    return Damage;
 }
 

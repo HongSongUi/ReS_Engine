@@ -112,3 +112,13 @@ void Object2D::CameraSet(Vector2 CamPos, Vector2 CamSize)
     ScreenToView(CamPos, CamSize);
     UpdateVertexList();
 }
+
+void Object2D::GetDamage(float damage)
+{
+    return;
+}
+
+Rect Object2D::GetObjectRect()
+{
+    return ObjectRect;
+}

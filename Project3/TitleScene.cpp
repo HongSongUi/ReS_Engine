@@ -17,9 +17,7 @@ bool TitleScene::Render()
 {
 	GameTitle->Render();
 	
-	GameTitleUI->PreRender();
-	D3D11Context->PSSetShaderResources(1, 1, &GameTitleUI->MaskTexture->TextureSRV);
-	GameTitleUI->PostRender();
+	GameTitleUI->MaskRender();
 	return true;
 }
 

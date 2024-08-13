@@ -2,7 +2,9 @@
 #include "IdleState.h"
 #include "DashState.h"
 #include "WallClingState.h"
+#include "HitState.h"
 #include "AirDashState.h"
+#include "WinState.h"
 #include "Input.h"
 #include "Player.h"
 void JumpState::Enter()
@@ -11,10 +13,31 @@ void JumpState::Enter()
 	Tag = JUMP;
 	Owner->SetJumpState(true);
 	Owner->UpdateJumpSpeed();
+	if (Owner->GetPrevState() == WALLCLING)
+	{
+		Owner->SetPlaySound(L"ROCK_X5_00206.wav");
+	}
+	else if(Owner->GetPrevState() != AIRDASH)
+	{
+		Owner->SetPlaySound(L"ROCK_X5_00764.wav");
+	}
 }
 
 void JumpState::Update()
 {
+	if (Owner->IsPlayerHit())
+	{
+		if (Owner->IsPlayerCanHit())
+		{
+			Owner->ChangeState(new HitState);
+			return;
+		}
+	}
+	if (Owner->GetPlayerWin())
+	{
+		Owner->ChangeState(new WinState);
+		return;
+	}
 	Owner->JumpAction();
 	Owner->PlayAnimation();
 	if (GameInput.GetKey(VK_LEFT) == KEY_HOLD)
@@ -47,17 +70,33 @@ void JumpState::Update()
 	{
 		WaitTime = 0.0f;
 		Owner->SetAnimation(Owner->FindSprite(L"ShootJump.txt"));
+		Owner->ResetChargeState();
+		Owner->SpawnBullet();
+	}
+	else if (GameInput.GetKey('X') == KEY_HOLD)
+	{
+		Owner->UpdateChargingState();
+		if (Owner->GetIsCharge()) {
+			Owner->SetAnimation(Owner->FindSprite(L"Jump.txt"));
+		}
 	}
 	else if (GameInput.GetKey('X') == KEY_FREE) 
 	{
-		/*if (ChargeState == CHARGEND)
+		if (Owner->GetIsCharge())
 		{
-			SetSprite(FindSprite(L"ShootJump.txt"));
-		}*/
-		WaitTime += gSecondPerFrame;
-		if (WaitTime > 0.1f) {
-			Owner->SetAnimation(Owner->FindSprite(L"Jump.txt"));
+			Owner->SetAnimation(Owner->FindSprite(L"ShootJump.txt"));
+			Owner->SpawnBullet();
+			Owner->ResetChargeState();
 		}
+		else
+		{
+			WaitTime += gSecondPerFrame;
+			if (WaitTime > 0.75f) 
+			{
+				Owner->SetAnimation(Owner->FindSprite(L"Jump.txt"));
+			}
+		}
+		
 	}
 	if (GameInput.GetKey('Z') == KEY_PUSH)
 	{
@@ -67,6 +106,7 @@ void JumpState::Update()
 	if (Owner->CheckJumpAccel())
 	{
 		Owner->ChangeState(new IdleState());
+		return;
 	}
 }
 
@@ -74,4 +114,5 @@ void JumpState::Exit()
 {
 	Owner->SetJumpState(false);
 	Owner->ResetAnimIndex();
+	Owner = nullptr;
 }

@@ -1,4 +1,5 @@
 #include "TextLoader.h"
+
 #include <Windows.h>
 #include <tchar.h>
 #include <corecrt_io.h>

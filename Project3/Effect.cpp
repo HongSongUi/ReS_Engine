@@ -22,6 +22,7 @@ bool Effect::Frame()
 
 bool Effect::Release()
 {
+	Object2D::Release();
 	Text = nullptr;
 	return true;
 }
@@ -76,7 +77,11 @@ void Effect::Play()
 			{
 				Index = (Sprite.size() / 2) + 3;
 			}
-			if (Tag == DASHDUST)
+			if (Loop == true)
+			{
+				Index = 0;
+			}
+			/*if (Tag == DASHDUST)
 			{
 				Index = 0;
 				return;
@@ -88,7 +93,7 @@ void Effect::Play()
 			else if (Tag == WALLDUST)
 			{
 				Index = 0;
-			}
+			}*/
 
 		}
 		EffectTimer = EffectTimer - frame;
@@ -105,4 +110,38 @@ void Effect::SetTexture(std::wstring TexName, std::wstring MaskName)
 {
 	TextureName = TexName;
 	MaskTexName = MaskName;
+}
+
+void Effect::ResetEffect()
+{
+	Index = 0.f;
+}
+
+void Effect::SetInverse(bool inverse)
+{
+	Inverse = inverse;
+}
+
+bool Effect::CheckAnimationEnd()
+{
+	if (Index == Sprite.size() - 1)
+	{
+		return true;
+	}
+	return false;
+}
+
+void Effect::SetLoop(bool isLoop)
+{
+	Loop = isLoop;
+}
+
+void Effect::SetEndLoop(bool isEndLoop)
+{
+	EndLoop = isEndLoop;
+}
+
+void Effect::ResetAnimation()
+{
+	Index = 0;
 }
