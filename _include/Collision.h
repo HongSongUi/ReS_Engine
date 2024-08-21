@@ -1,5 +1,6 @@
 #pragma once
 #include "MathLib.h"
+
 #define CalcEpsilon 0.0001f
 
 enum HCollisionType
@@ -48,20 +49,20 @@ public:
 
 	Vector3 Axis[3];
 	float Extent[3];
-	//Object3D* _parent;
+	class Object3D* Parent;
 public:
 	Box();
 	Box(Vector3 max, Vector3 min);
 	void SetBox(Vector3 max, Vector3 min);
-	//void SetParent(Object3D* parent);
+	void SetParent(class Object3D* parent);
 };
 
-struct Ray
+struct MouseRay
 {
 	float Extent;
 	Vector3 Origin;
 	Vector3 Direction;
-	Ray()
+	MouseRay()
 	{
 		Extent = -1;
 	}

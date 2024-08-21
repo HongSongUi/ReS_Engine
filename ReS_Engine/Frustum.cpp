@@ -49,7 +49,7 @@ bool Frustum::ClassifyPoint(Vector3 v)
 	return true;
 }
 
-POSITION Frustum::ClassifyBox(Box obb)
+H_POSITION Frustum::ClassifyBox(Box obb)
 {
 	float BoxToPlaneDis = 0.0f;
 	float Distance = 0.0f;
@@ -58,7 +58,7 @@ POSITION Frustum::ClassifyBox(Box obb)
 	float DisZ = 0.0f;
 	Vector3 Dir;
 
-	POSITION Check = _FRONT;
+	H_POSITION Check = _FRONT;
 	for (int p = 0; p < 6; p++) 
 	{
 		Dir = obb.Axis[0] * obb.Extent[0];

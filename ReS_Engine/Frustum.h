@@ -1,7 +1,7 @@
 #pragma once
 #include "MathLib.h"
 #include "Collision.h"
-enum POSITION {
+enum H_POSITION {
 	_BACK = 0,
 	_FRONT,
 	_ONPLANE,
@@ -45,6 +45,6 @@ public:
 public:
 	void CreateFrustum(Matrix* view, Matrix* proj);
 	bool ClassifyPoint(Vector3 v);
-	POSITION ClassifyBox(Box obb);
+	H_POSITION ClassifyBox(Box obb);
 };
 

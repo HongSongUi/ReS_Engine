@@ -18,14 +18,14 @@ public:
 	std::vector<Vertex> InitVertexList;
 	std::vector<unsigned int> IndexList;
 
-	//Matrix _worldMat;
-	//Matrix _viewMat;
-	//Matrix _projMat;
+	Matrix WorldMat;
+	Matrix ViewMat;
+	Matrix ProjMat;
 
-	//Vector4 _lightDir;
-	//Vector4 _lightPos;
-	//Vector4 _eyeDir;
-	//Vector4 _eyePos;
+	Vector4 LightDir;
+	Vector4 LightPos;
+	Vector4 EyeDir;
+	Vector4 EyePos;
 
 public:
 	float Mass;
@@ -48,8 +48,8 @@ public:
 	virtual bool PostRender();
 	virtual void UpdateVertexList();
 	virtual void UpdatePosition() {};
-	virtual void SetMatrix(Matrix* world, Matrix* view, Matrix* proj) {};
-	virtual void SetLight(Vector4* lightDir, Vector4* lightPos, Vector4* eyePos, Vector4* eyeDir) {};
+	virtual void SetMatrix(Matrix* world, Matrix* view, Matrix* proj);
+	virtual void SetLight(Vector4* lightDir, Vector4* lightPos, Vector4* eyePos, Vector4* eyeDir);
 public:
 	virtual void SetPhysics() {};
 	virtual void SetPosition(Vector2 pos) {};

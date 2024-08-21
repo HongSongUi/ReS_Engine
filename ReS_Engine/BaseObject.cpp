@@ -45,6 +45,43 @@ void BaseObject::UpdateVertexList()
     Mesh.UpdateVertexBuffer();
 }
 
+void BaseObject::SetMatrix(Matrix* world, Matrix* view, Matrix* proj)
+{
+    if (world != nullptr)
+    {
+        WorldMat = *world;
+    }
+    if (view != nullptr)
+    {
+        ViewMat = *view;
+    }
+    if (proj != nullptr)
+    {
+        ProjMat = *proj;
+    }
+    Mesh.SetMatrix(world, view, proj);
+}
+
+void BaseObject::SetLight(Vector4* lightDir, Vector4* lightPos, Vector4* eyePos, Vector4* eyeDir)
+{
+    if (lightDir != nullptr)
+    {
+        LightDir = *lightDir;
+    }
+    if (lightPos != nullptr)
+    {
+        LightPos = *lightPos;
+    }
+    if (eyePos != nullptr)
+    {
+        EyePos = *eyePos;
+    }
+    if (eyeDir != nullptr)
+    {
+        EyeDir = *eyeDir;
+    }
+    Mesh.SetLightData(lightDir, lightPos, eyePos, eyeDir);
+}
 
 void BaseObject::SetVertexList()
 {

@@ -1,5 +1,5 @@
 #include "Collision.h"
-
+#include "Object3D.h"
 Rect::Rect()
 {
 
@@ -82,6 +82,11 @@ void Box::SetBox(Vector3 max, Vector3 min)
 	Extent[0] = Max.x - Center.x;
 	Extent[1] = Max.y - Center.y;
 	Extent[2] = Max.z - Center.z;
+}
+
+void Box::SetParent(Object3D* parent)
+{
+	Parent = parent;
 }
 
 

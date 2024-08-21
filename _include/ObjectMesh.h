@@ -55,7 +55,7 @@ struct IW_VERTEX
 
 struct VS_CONSTANT_BONE_BUFFER 
 {
-	Matrix _BoneMat[255];
+	Matrix BoneMat[255];
 };
 class ObjectMesh
 {

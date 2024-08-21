@@ -24,6 +24,9 @@ Texture* TextureManager::Load(std::wstring name)
 	}
 	else 
 	{
+		NewData->Release();
+		delete  NewData;
+		NewData = nullptr;
 		return nullptr;
 	}
 }

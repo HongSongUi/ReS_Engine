@@ -31,6 +31,9 @@
     <Filter Include="Object">
       <UniqueIdentifier>{00bd1677-1fe5-4315-838d-e13dbce9afdd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FBX">
+      <UniqueIdentifier>{7a0f0b94-e9f1-4707-8855-e6408f4b55ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameWindow.h">
@@ -111,6 +114,33 @@
     <ClInclude Include="Object3D.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="FbxEntity.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="FbxObjMesh.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="FbxSceneLoader.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="Picking.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMap.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="HeightMap.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameWindow.cpp">
@@ -187,6 +217,33 @@
     </ClCompile>
     <ClCompile Include="Object3D.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="FbxSceneLoader.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="FbxObjMesh.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="FbxEntity.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="Picking.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMap.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="HeightMap.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

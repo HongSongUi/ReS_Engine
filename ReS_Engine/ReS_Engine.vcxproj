@@ -27,14 +27,23 @@
     <ClInclude Include="DefaultCamera.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="DxState.h" />
+    <ClInclude Include="FbxSceneLoader.h" />
+    <ClInclude Include="FbxObjMesh.h" />
+    <ClInclude Include="FbxEntity.h" />
     <ClInclude Include="Frustum.h" />
     <ClInclude Include="GameCore.h" />
+    <ClInclude Include="GameMap.h" />
     <ClInclude Include="GameWindow.h" />
+    <ClInclude Include="HeightMap.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="MathLib.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Object2D.h" />
     <ClInclude Include="Object3D.h" />
     <ClInclude Include="ObjectMesh.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="Picking.h" />
+    <ClInclude Include="QuadTree.h" />
     <ClInclude Include="RenderToTexture.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderManager.h" />
@@ -55,14 +64,23 @@
     <ClCompile Include="DefaultCamera.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="DxState.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="FbxSceneLoader.cpp" />
+    <ClCompile Include="FbxObjMesh.cpp" />
+    <ClCompile Include="FbxEntity.cpp" />
     <ClCompile Include="Frustum.cpp" />
     <ClCompile Include="GameCore.cpp" />
+    <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="GameWindow.cpp" />
+    <ClCompile Include="HeightMap.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="MathLib.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Object2D.cpp" />
     <ClCompile Include="Object3D.cpp" />
     <ClCompile Include="ObjectMesh.cpp" />
+    <ClCompile Include="Picking.cpp" />
+    <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="RenderToTexture.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderManager.cpp" />
@@ -171,7 +189,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>../_include/DxTk;../_include/Fmod;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../_include/DxTk;../_include/Fmod;../_fbxsdk/include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -184,6 +202,7 @@ copy "ReS_Engine_D.lib" "..\\_lib"</Command>
     </PostBuildEvent>
     <Lib>
       <OutputFile>ReS_Engine_D.lib</OutputFile>
+      <AdditionalLibraryDirectories>../_fbxsdk/lib/vs2019/x64/debug</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

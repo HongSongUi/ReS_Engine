@@ -141,14 +141,14 @@ bool GameCore::CoreRender()
 		RenderTexture.OldViewPort[0] = GameDevice.ViewPort;
 		if (RenderTexture.Begin(GameDevice.D3D11Context))
 		{
-			
+			Render();
 			RenderTexture.End(GameDevice.D3D11Context);
 		}
 		if (RenderTexture.ShaderResourceView)
 		{
 			RenderTarget.Mesh.TextureSRV = RenderTexture.ShaderResourceView;
 		}
-		//RenderTarget.SetMatrix(nullptr, nullptr, nullptr);
+		RenderTarget.SetMatrix(nullptr, nullptr, nullptr);
 		RenderTarget.Render();
 	}
 	else
